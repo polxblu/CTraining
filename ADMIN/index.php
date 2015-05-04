@@ -44,23 +44,28 @@ if (isset($_POST['ACT'])){
 	  break;
 
 //Aggiunge Lingua solo x webber
-	  case 'Agg. Lingua':
-          require('SLD/CODE/addLang.php');
+	  case 'addLanguages':
+          require('../CODES/addLanguages.php');
 	  break;
 
 //Modifica Lingua solo x webber
-	  case 'Mod Lingua':
-          require('SLD/CODE/moddLang.php');
+	  case 'setDefLang':
+          require('../CODES/7DefLanguages.php');
+	  break;
+
+//Modifica Lingua solo x webber
+	  case 'modLanguages':
+          require('../CODES/modLanguages.php');
 	  break;
 
 //Elimina Lingua solo x webber
-	  case 'Del Lingua':
-          require('SLD/CODE/delLang.php');
+	  case 'delLanguages':
+          require('../CODES/delLanguages.php');
 	  break;
 
 //Modifica Immagine
-	  case $langar['buttons']['chgImg']:
-          require('SLD/CODE/modIMG.php');
+	  case 'chgIMG'://$langar['buttons']['chgImg']:
+          require('../CODES/chgIMG.php');
 	  break;
 
 //Modifica Testo
@@ -74,7 +79,7 @@ if (isset($_POST['ACT'])){
 
 //LogOut  DEVE ASSOLUTAMENTE ESSERE il ULTIMO
 	  default:
-          sllog();
+          //sllog();
 	  break;
 
    }

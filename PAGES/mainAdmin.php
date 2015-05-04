@@ -7,7 +7,11 @@
 	  break;
 
 	  case 'lingue':// Pagina modifica aggiunta lingue
-          require('../MODULES/modLang.php');
+          require('../MODULES/adminLanguages.php');
+	  break;
+
+	  case 'chgImage':// Pagina Cambio Immagini
+          require('../COMMON/chgImage.php');
 	  break;
 
 	  case 'admin':// Crea Modifica Rimuove Lingue

@@ -7,14 +7,12 @@ function engine(){
     global $var;
     
     if (isset($_GET['token'])){
-        $data = pack("H*",$_GET['token']);
-        $process=explode('#',$data);
+        $var['dToken'] = pack("H*",$_GET['token']);
+        $process=explode('#',$var['dToken']);
         for ($i=0;$i<count($process);$i=$i+2){
             $uar[$process[$i]]=$process[$i+1];    
         }
         $var['pag']=$uar['pag'];
-        if(isset($uar['lang'])) $var['lang']=$uar['lang'];
-        else  $var['lang']=$kar['langDef'];
     }
     
 }
@@ -37,6 +35,7 @@ function langMAKER($comm){
     
     global $kar;
     global $var;
+    global $uar;
     global $txtDB;
     
     $rarray=array();
@@ -47,9 +46,9 @@ function langMAKER($comm){
         if ($rarray['str']['defaultL'][$i]=='yes')$rarray['defaultL']=$rarray['str']['id'][$i];
     }
 
-    if (!isset($var['lang'])){
+    if (!isset($uar['lang'])){
         if (isset($_SESSION['lang'])){
-            $var['lang']=$_SESSION['lnag'];
+            $uar['lang']=$_SESSION['lnag'];
         }else{
             if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
                 $var['ip'] = $_SERVER['HTTP_CLIENT_IP'];
@@ -63,8 +62,8 @@ function langMAKER($comm){
             $txtDB->setColWh(array('cCode'));
             $txtDB->setValWh(array($cCode));
             $res=$txtDB->select('languages');
-            if(empty($res['id']))$var['lang']=$rarray['defaultL'];
-            else $var['lang']=$res['id'];
+            if(empty($res['id']))$uar['lang']=$rarray['defaultL'];
+            else $uar['lang']=$res['id'];
         }
     }
     
@@ -79,7 +78,7 @@ function langMAKER($comm){
     
     for ($j=0;$j<$comm['num'];$j++){
         $txtDB->setColWh(array('languages','pages'));
-        $txtDB->setValWh(array($var['lang'],$comm['idc'][$j]));
+        $txtDB->setValWh(array($uar['lang'],$comm['idc'][$j]));
         $array=$txtDB->select('txtWeb');
         for ($i=0;$i<$array['num'];$i++){
             $rarray[$comm['idc'][$j]][$array['rifTxt'][$i]]=$array['txt'][$i];

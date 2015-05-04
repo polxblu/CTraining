@@ -12,7 +12,6 @@ $kar=array(
     ,'dbhostOut' => 'multipol.no-ip.org:3306'      // host used to access it
     ,'debug'	 =>  true	// Sito in modalità debug
     ,'noInt'	 =>  false	// Sito in modalità sviluppo senza internete
-    ,'langDef'	 =>  'default'	// Lingua di Dufault
     ,'flagdir'	 =>  'IMAGES/LANG/'	// Directory Bandierine
     ,'imgdir'	 =>  'image/upload/'	// Directory Immagini
     ,'imgwid'    => 600     // larghezza immagine

@@ -27,6 +27,6 @@ if (empty($_POST['name'])||empty($_POST['cCode']))
         $txtDB->insert('txt');
     }
     $txtDB->debug();
-    //Redieasy('index.php'.$_GET['token']);
+    Redieasy('index.php'.$_GET['token']);
 
 ?>
