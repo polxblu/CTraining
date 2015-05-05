@@ -1,4 +1,4 @@
-<form action="index.php?token=<?php $uar['pag']=$var['uar']; toUrl(); echo $var['redi'];?>" method="post" enctype="multipart/form-data" name="chgImg" id="chgImg">
+<form action="index.php?token=<?php echo $_GET['token'];?>" method="post" enctype="multipart/form-data" name="chgImg" id="chgImg">
 <br/>
 <table>
 <tr>
@@ -24,8 +24,8 @@ if ($_POST['picsName']=='noPicz')
        <input name="id" type="hidden" value="<?php echo $_POST['id'];?>"/>
        <input name="type" type="hidden" value="<?php echo $_POST['type'];?>"/>
        <input name="token" type="hidden" value="<?php echo $_POST['token'];?>"/>
-       <button name="ACT" type="submit" value="<?php echo 'chgIMG';?>">
-         <?php echo 'Cambia Immagine';?>
+       <button name="ACT" type="submit" value="<?php echo $testo['buttons']['chgIMG'];?>">
+         <?php echo $testo['buttons']['chgIMG'];?>
        </button>
     </td>
 </tr>

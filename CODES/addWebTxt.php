@@ -1,14 +1,18 @@
 <?php
-for ($i=0;$i<$langar['str']['num'];$i++){
+if( empty($_POST['pagesN']) || empty($_POST['sectionsN']) || empty($_POST['txt']) || empty($_POST['rifTxt'])){
+    $var['er']=$testo['errors']['emptyField'];    
+}else{    
+    $txtDB->setColWh(array('rifTxt'));
+    $txtDB->setValWh(array($_POST['rifTxt']));
+    $res=$txtDB->select('txtWeb');
     
-    $txtDB->setColDt(array('id','name','cCode'));
-    $txtDB->setValDt(array($var['newID'],$_POST['name'],strtoupper($_POST['cCode'])));
-    $txtDB->insert('languages');
-
-    DBtoAR::$colonne=array('lanID','Xsez','Xpag','rifTxt','txt');
-    DBtoAR::$tabella='wbtxtz';
-    DBtoAR::$valori=array($langar['str']['lanID'][$i],$_POST['XsezN'],$_POST['XpagN'],$_POST['rifTxt'],$_POST['txt']);
-    DBtoAR::insert();
+    if(!isset($res['id'])){
+        for ($i=0;$i<$testo['str']['num'];$i++){
+            $txtDB->setColDt(array('languages','pages','sections','rifTxt','txt'));
+            $txtDB->setValDt(array($testo['str']['id'][$i],$_POST['pagesN'],$_POST['sectionsN'],$_POST['rifTxt'],txaTOdb($_POST['txt'],true)));
+            $txtDB->insert('txtWeb');
+        }
+        Redieasy('index.php?token='.$_GET['token']);
+    }else $var['er']=$testo['errors']['rifAlreadyPresent'];
 }
-Redieasy('index.php?token='.$_POST['token']);
 ?>

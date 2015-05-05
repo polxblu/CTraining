@@ -38,38 +38,53 @@ if (isset($_POST['ACT'])){
    switch ($_POST['ACT']){
 
 //LogIn DEVE ASSOLUTAMENTE ESSERE il PRIMO
-	  case $but['LogIn']:
-          require('SLD/CODE/LogIn.php');
+	  case $testo['buttons']['LogIn']:
+          require('../CODES/LogIn.php');
 	  break;
 
 //Aggiunge Lingua solo x webber
-	  case 'addLanguages':
+	  case $testo['buttons']['addLanguages']:
           require('../CODES/addLanguages.php');
 	  break;
 
 //Modifica Lingua solo x webber
-	  case 'setDefLang':
+	  case $testo['buttons']['setDefLang']:
           require('../CODES/7DefLanguages.php');
 	  break;
 
 //Modifica Lingua solo x webber
-	  case 'modLanguages':
+	  case $testo['buttons']['modLanguages']:
           require('../CODES/modLanguages.php');
 	  break;
 
 //Elimina Lingua solo x webber
-	  case 'delLanguages':
+	  case $testo['buttons']['delLanguages']:
           require('../CODES/delLanguages.php');
 	  break;
 
+//Aggiungi Testo al sito
+	  case $testo['buttons']['addWebTxt']:
+          require('../CODES/addWebTxt.php');
+	  break;
+
+//Modifica Riferimenti Testo del sito
+	  case $testo['buttons']['modRifWebTxt']:
+          require('../CODES/modWebTxt.php');
+	  break;
+
+//Elimina Riferimenti e Testo dal sito
+	  case $testo['buttons']['delTxtWeb']:
+          require('../CODES/delWebTxt.php');
+	  break;
+
 //Modifica Immagine
-	  case 'chgIMG'://$langar['buttons']['chgImg']:
+	  case $testo['buttons']['chgIMG']:
           require('../CODES/chgIMG.php');
 	  break;
 
 //Modifica Testo
-	  case $langar['buttons']['chgTxt']:
-          require('SLD/CODE/modTXT.php');
+	  case $testo['buttons']['chgTXT']:
+          require('../CODES/modTXT.php');
 	  break;
 
 

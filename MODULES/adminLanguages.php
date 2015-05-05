@@ -18,8 +18,8 @@
         <input name="cCode" type="text" maxlength="2" />
     </td>
 	<td align="center" valign="middle">
-            <button name="ACT" type="submit" value="addLanguages">
-               Agg. Lingua
+            <button name="ACT" type="submit" value="<?php echo $testo['buttons']['addLanguages'];?>">
+               <?php echo $testo['buttons']['addLanguages'];?>
             </button>
     </td>
 </tr>
@@ -40,8 +40,8 @@ for ($i=0;$i<$def['num'];$i++){
     echo '<input type="radio" value="'.$def['id'][$i].'" ';if ($def['defaultL'][$i]=='yes')echo 'checked="checked"';echo' name="defaultL" />'.$def['name'][$i].'<br/>';
 }
 ?>
-            <button name="ACT" type="submit" value="setDefLang">
-               Set Default Languages
+            <button name="ACT" type="submit" value="<?php echo $testo['buttons']['setDefLang'];?>">
+               <?php echo $testo['buttons']['setDefLang'];?>
             </button>
 </form>
 
@@ -70,8 +70,9 @@ for ($i=0;$i<$def['num'];$i++){
 <?php
 for ($i=0;$i<$def['num'];$i++){
     if ($DBtable['languages']['flag']){
+    $uar['pag']='chgImage';toUrl();
     echo '
-<form action="index.php?token='.$_GET['token'].'" method="post" enctype="multipart/form-data">
+<form action="index.php?token='.$var['token'].'" method="post" enctype="multipart/form-data">
 <tr>
 	<td>
     ';
@@ -83,16 +84,17 @@ for ($i=0;$i<$def['num'];$i++){
             <input type="hidden" name="type" value="flag" />
             <input type="hidden" name="token" value="'.$_GET['token'].'" />
             <input type="hidden" name="picsName" value="'.$def['flag'][$i].'" />
-            <button name="ACT" type="submit" value="chgIMG">
-               Cambia Immagine
+            <button name="ACT" type="submit" value="'.$testo['buttons']['chgIMG'].'">
+               '.$testo['buttons']['chgIMG'].'
             </button>
     </td>
 </form>
     ';
     }
     if ($DBtable['languages']['flago']){
+    $uar['pag']='chgImage';toUrl();
     echo'
-<form action="index.php?token='.$_GET['token'].'" method="post">
+<form action="index.php?token='.$var['token'].'" method="post">
 	<td>
     ';
     if($def['flago'][$i]=='noPicz') echo 'NoPics';
@@ -103,8 +105,8 @@ for ($i=0;$i<$def['num'];$i++){
             <input type="hidden" name="type" value="flago" />
             <input type="hidden" name="token" value="'.$_GET['token'].'" />
             <input type="hidden" name="picsName" value="'.$def['flago'][$i].'" />
-            <button name="ACT" type="submit" value="chgIMG">
-               Cambia Cimmagine
+            <button name="ACT" type="submit" value="'.$testo['buttons']['chgIMG'].'">
+               '.$testo['buttons']['chgIMG'].'
             </button>
     </td>
 </form>
@@ -129,8 +131,8 @@ echo'
     </td>
 	<td>
             <input type="hidden" name="id" value="'.$def['id'][$i].'" />
-            <button name="ACT" type="submit" value="modLanguages">
-               Modda a Lingua
+            <button name="ACT" type="submit" value="'.$testo['buttons']['modLanguages'].'">
+               '.$testo['buttons']['modLanguages'].'
             </button><br/>
 ';
 if ($def['defaultL'][$i]=='no')
@@ -138,8 +140,8 @@ echo'
             <input type="hidden" name="flag" value="'.$def['flag'][$i].'" />
             <input type="hidden" name="flago" value="'.$def['flago'][$i].'" />
             <input type="checkbox" name="delSure" value="yes" />Sicuro?
-            <button name="ACT" type="submit" value="delLanguages">
-               Elimina Lingua
+            <button name="ACT" type="submit" value="'.$testo['buttons']['delLanguages'].'">
+               '.$testo['buttons']['delLanguages'].'
             </button>
 ';
 echo'

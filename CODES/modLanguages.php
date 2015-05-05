@@ -1,5 +1,5 @@
 <?php
-if (empty($_POST['name'])||empty($_POST['cCode']))$var['er']='Campi Vuoti';
+if (empty($_POST['name'])||empty($_POST['cCode']))$var['er']=$testo['errors']['emptyField'];
 else{    
     if (isset($_POST['ready']))$var['yn']='yes';else$var['yn']='no';
     $txtDB->setColWh(array('id'));
@@ -8,6 +8,6 @@ else{
     $txtDB->setValDt(array($_POST['name'],strtoupper($_POST['cCode']),$var['yn']));
     $txtDB->update('languages');
 
-    //Redieasy('index.php?token='.$_GET['token']);
+    Redieasy('index.php?token='.$_GET['token']);
 } 
 ?>

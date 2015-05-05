@@ -1,5 +1,5 @@
 <?php
-$var['pag']='chgImage';
+
 switch ($_POST['type']){
    case 'flag': //Cambio bandierine
       $var['dirImg']='../'.$kar['flagdir'];
@@ -38,24 +38,24 @@ if (isset($_POST['round'])){
         /*
         }else{
             unlink($_FILES['pics']['tmp_name']);
-            $var['er']=$_FILES['pics']['name'].$langar['errors']['alReadyImg']; 
+            $var['er']=$_FILES['pics']['name'].'&nbsp;'.$testo['errors']['alReadyImg']; 
         }
         */
     }else{
        switch ($var['img']){
           case '3':
-             $var['er']=$_FILES['pics']['name'].$langar['errors']['imgPLoad'];
+             $var['er']=$_FILES['pics']['name'].'&nbsp;'.$testo['errors']['imgPLoad'];
              unlink($_FILES['pics']['tmp_name']);
           break;
           case '4':
              $var['er']=$langar['errors']['imgNoFile'];
           break;
           case 'type':
-             $var['er']=$_FILES['pics']['name'].$langar['errors']['imgType'];
+             $var['er']=$_FILES['pics']['name'].'&nbsp;'.$testo['errors']['imgType'];
              unlink($_FILES['pics']['tmp_name']);
           break;
           default:
-             $var['er']=$_FILES['pics']['name'].$langar['errors']['imgToBig'];
+             $var['er']=$_FILES['pics']['name'].'&nbsp;'.$testo['errors']['imgToBig'];
           break;
        }// switch
     }

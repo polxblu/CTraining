@@ -2,7 +2,7 @@
 <link rel="shortcut icon" href="image/favicon.ico" />
 <link rel="icon" href="image/favicon.ico" />
 <link href="../CONFIG/admin.css" rel="stylesheet" type="text/css">
-<script language="JavaScript" type="text/JavaScript" SRC="SLD/function.js"></script>
+<script language="JavaScript" type="text/JavaScript" src="../CLASSANDFUNC/function.js"></script>
 <body>
 
 

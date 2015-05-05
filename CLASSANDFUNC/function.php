@@ -1,4 +1,16 @@
 <?php
+function txaTOdb($txt,$dir){
+   $car = array('"','¡','¨','«','°','±','´','µ','¶','¸','»','¿','À','Á','Â','Ã','Ä','Å','Æ','Ç','È','É','Ê','Ë','Ì','Í','Î','Ï','Ð','Ñ','Ò','Ó','Ô','Õ','Ö','Ø','Ù','Ú','Û','Ü','Ý','Þ','ß','à','á','â','ã','ä','å','æ','ç','è','é','ê','ë','ì','í','î','ï','ð','ñ','ò','ó','ô','õ','ö','ø','ù','ú','û','ü','ý','þ','ÿ');
+   $con = array('&quot;','&iexcl;','&uml;','&laquo;','&deg;','&plusmn;','&acute;','&micro;','&para;','&cedil;','&raquo;','&iquest;','&Agrave;','&Acute;','&Acirc;','&Atilde;','&Auml;','&Aring;','&AElig;','&Ccedil;','&Egrave;','&Eacute;','&Ecirc;','&Euml;','&Igrave;','&Iacute;','&Icirc;','&Iuml;','&ETH;','&Ntilde;','&Ograve;','&Oacute;','&Ocirc;','&Otilde;','&Ouml;','&Oslash;','&Ugrave;','&Uacute;','&Ucirc;','&Uuml;','&Yacute;','&ETHORN;','&szlig;','&agrave;','&aacute;','&acirc;','&atilde;','&auml;','&aring;','&aelig;','&ccedil;','&egrave;','&eacute;','&ecirc;','&euml;','&igrave;','&iacute;','&icirc;','&iuml;','&eth;','&ntilde;','&oacute;','&ograve;','&ocirc;','&otilde;','&ouml;','&oslash;','&ugrave;','&uacute;','&ucirc;','&uuml;','&yacute;','&thorn;','&yuml;');
+   if ($dir){
+      $txt = str_replace($car, $con, $txt);
+      $txt = str_replace("'", "\'", $txt);
+   }else{
+      $txt = str_replace($con, $car, $txt);
+   }
+
+   return $txt;
+}
 
 function engine(){
     
@@ -48,11 +60,11 @@ function toUrl(){
     global $var;
     global $kar;
     
-    $var['redi']='';
+    $var['token']='';
     foreach ($uar as $key => $value){
-        $var['redi'].=$key.'#'.$value.'#';
+        $var['token'].=$key.'#'.$value.'#';
     }
-    $var['redi']=bin2hex(substr($var['redi'],0,-1));
+    $var['token']=bin2hex(substr($var['token'],0,-1));
     
 }
 
@@ -79,8 +91,8 @@ function langMAKER($comm){
         $array=$txtDB->select('txtWeb');
         for ($i=0;$i<$array['num'];$i++){
             $testo[$comm['idc'][$j]][$array['rifTxt'][$i]]=$array['txt'][$i];
-            $testo[$comm['idc'][$j]][$array['rifTxt'][$i]]['id']=$array['id'][$i];
-            $testo[$comm['idc'][$j]][$array['rifTxt'][$i]]['sections']=$array['sections'][$i];
+            $testo[$comm['idc'][$j]][$array['rifTxt'][$i].'id']=$array['id'][$i];
+            $testo[$comm['idc'][$j]][$array['rifTxt'][$i].'sections']=$array['sections'][$i];
         }
     }
 

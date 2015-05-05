@@ -9,7 +9,7 @@ if (isset($_GET['token'])){
 }
 echo'<table cellpadding="5" cellspacing="5px"><tr><td valign="top" align="left" style="border-right:1px black solid;">Variabili<br>';
 foreach($var as $key => $value){
-    if(($key!=='redi')&&($key!=='dToken')){if(!is_array($value)){
+    if(($key!=='dToken')&&($key!=='token')){if(!is_array($value)){
         echo '<font color="#ff0000"> '.$key.' <=> '.$value.'<br></font>';
 }}}
 echo '</td><td valign="top" align="left" style="border-right:1px black solid;">2Url<br>';
