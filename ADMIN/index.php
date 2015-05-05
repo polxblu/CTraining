@@ -7,7 +7,7 @@ require '../CONFIG/config.php';
 require '../CONFIG/site.php';
 require '../CLASSANDFUNC/Db2Ar.php';
 require '../CLASSANDFUNC/function.php';
-$var['pag']='admin';
+
 
 //SetUp
 engine();

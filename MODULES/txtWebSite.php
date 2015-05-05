@@ -1,32 +1,33 @@
-<?php include_once('SLD/jsSelTxt.php'); ?>
+<?php include_once('../CLASSANDFUNC/txtWebSiteJS.php'); ?>
 <div id="newWbTxt">
 <table align="center" width="100%" cellpadding="0">
 <tr>
 	<td width="100%" align="center">
-		<form action="index.php<?php echo $var['redi'];?>" method="post" name="selXsezN" id="selXsezN">
+		<form action="index.php?token=<?php echo $_GET['token'];?>" method="post" name="selSectionsN" id="selSectionsN">
 
 <table align="center">
 <tr>
-	<td align="center" valign="middle">Xsez</td>
-	<td align="center" valign="middle">Xpag</td>
+	<td align="center" valign="middle">sections</td></td>
+	<td align="center" valign="middle">pages</td>
 	<td align="center" valign="middle">rifTxt</td>
 	<td align="center" valign="middle">txt</td>
-	<td align="center" valign="middle"></td>
+	<td align="center" valign="middle"><?php echo $var['er'];?></td>
 </tr>
 <tr>
 	<td align="center" valign="middle">
-		<select onChange="chgSelTxt('N');" name="XsezN" id="XsezN" size="1">
+		<select onChange="chgSelTxt('N');" name="sectionsN" id="sectionsN" size="1">
             <option></option>
+            <option value="commonTxt">commonTxt</option>
 <?php
-   			for ($j=0;$j<$definitions['Xsez']['num'];$j++){
-	   			echo '<option value="'.$definitions['Xsez']['idc'][$j].'">'.$definitions['Xsez']['idc'][$j].'</option>
+   			for ($j=0;$j<$definitions['pagesTxt']['num'];$j++){
+	   			echo '<option value="'.$definitions['pagesTxt']['idc'][$j].'">'.$definitions['pagesTxt']['idc'][$j].'</option>
                      ';
    			}
 ?>
 		</select>
     </td>
 	<td align="center" valign="middle">
-		<select name="XpagN" id="XpagN" size="1">
+		<select name="pagesN" id="pagesN" size="1">
             <option></option>
 		</select>
     </td>

@@ -5,18 +5,18 @@ $testo=array(); //inizzializzazione array x TESTO
 // Definizione Array Costruzione Sito
 $definitions=array(
       'commonTxt'  => array (  // Tipi di Testo
-                       'num'    =>  4   //numero di oggetti
-                      ,'idc'  =>  array('menu','errors','buttons','login')      //definizione di oggetti
+                       'num'    =>  5   //numero di oggetti
+                      ,'idc'  =>  array('menu','errors','buttons','login','common')      //definizione di oggetti
                       )
-     ,'pageTxt'  => array (  // Tipi di Testo
+     ,'pagesTxt'  => array (  // Tipi di Testo
                        'num'    =>  1   //numero di oggetti
                       ,'idc'  =>  array('admin')      //definizione di oggetti
                       )
      ,'menu'  => array (  // Elenco menu
                       'admin'  => array (  // Elenco menu admin
-                             'num'  =>  2   //numero di oggetti
-                            ,'idc'  =>  array('webTxt','lingue')     //definizione di oggetti
-                            ,'priv' =>  array('usage','si')      //definizione di oggetti
+                             'num'  =>  3   //numero di oggetti
+                            ,'idc'  =>  array('home','webTxt','lingue')     //definizione di oggetti
+                            ,'priv' =>  array('no','usage','si')      //definizione di oggetti
                             )
                       )
     );
@@ -24,7 +24,7 @@ $definitions=array(
 
 // DEFINIZIONI UTILIZZO TABLE
 $DBtable=array(
-     'user'   => array (  // Service
+     'user'   => array (  // Tabella User
            'name'     =>  true   
           ,'surname'  =>  true
           ,'zip'      =>  true
@@ -42,6 +42,11 @@ $DBtable=array(
           ,'opt7'     =>  true
           ,'opt8'     =>  true
           ,'opt9'     =>  true
+          )  
+     ,'languages' => array (  // Tabella lingue
+           'flag'     =>  true   
+          ,'flago'    =>  true
+          ,'cCode'    =>  true
           )  
     );
 

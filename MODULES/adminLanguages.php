@@ -50,15 +50,26 @@ for ($i=0;$i<$def['num'];$i++){
 
 <table>
 <tr>
-	<td>Flag</td>
-	<td>Flag Over</td>
+    <?php
+    if ($DBtable['languages']['flag']){
+	echo '<td>Flag</td>';
+    }
+    if ($DBtable['languages']['flago']){
+	echo '<td>Flag Over</td>';
+    }
+    ?>
 	<td>Name</td>
-	<td>Codice Paese</td>
+    <?php
+    if ($DBtable['languages']['cCode']){
+	echo '<td>Codice Paese</td>';
+    }
+    ?>
 	<td>Ready?</td>
 	<td><?php echo $var['er']; ?></td>
 </tr>
 <?php
 for ($i=0;$i<$def['num'];$i++){
+    if ($DBtable['languages']['flag']){
     echo '
 <form action="index.php?token='.$_GET['token'].'" method="post" enctype="multipart/form-data">
 <tr>
@@ -77,6 +88,10 @@ for ($i=0;$i<$def['num'];$i++){
             </button>
     </td>
 </form>
+    ';
+    }
+    if ($DBtable['languages']['flago']){
+    echo'
 <form action="index.php?token='.$_GET['token'].'" method="post">
 	<td>
     ';
@@ -93,14 +108,23 @@ for ($i=0;$i<$def['num'];$i++){
             </button>
     </td>
 </form>
+    ';
+    }
+echo'
 <form action="index.php?token='.$_GET['token'].'" method="post">
 	<td>
     <input name="name" value="'.$def['name'][$i].'" type="text" />
     </td>
-	<td>
+';
+if ($DBtable['languages']['cCode']){
+echo'
+    <td>
     <input name="cCode" value="'.$def['cCode'][$i].'" type="text" maxlength="2" />
     </td>
-	<td>
+';
+}
+echo'
+    <td>
     <input type="checkbox" name="ready" value="yes"';if ($def['ready'][$i]=='yes')echo 'checked="checked"'; echo ' />
     </td>
 	<td>

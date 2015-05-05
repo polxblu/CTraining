@@ -21,7 +21,7 @@ switch ($_POST['type']){
 if (isset($_POST['round'])){
     $var['img']=chkImgFile('pics');
     if ($var['img']=='ok'){
-        if($_POST['picsName']!=='noPicz')unlink($var['dirImg'].$_POST['nomeImg']);
+        if($_POST['picsName']!=='noPicz')unlink($var['dirImg'].$_POST['picsName']);
         /*
         $usageDB->setColWh(array($_POST['type']));
         $usageDB->setValWh(array($_FILES['pics']['name']));
