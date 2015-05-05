@@ -5,7 +5,15 @@ function engine(){
     global $uar;
     global $kar;
     global $var;
-    
+    global $txtDB;
+    global $testo;
+
+    $testo['str']=$txtDB->select('languages');
+
+    for ($i=0;$i<$testo['str']['num'];$i++){
+        if ($testo['str']['defaultL'][$i]=='yes')$testo['defaultL']=$testo['str']['id'][$i];
+    }
+
     if (isset($_GET['token'])){
         $var['dToken'] = pack("H*",$_GET['token']);
         $process=explode('#',$var['dToken']);
@@ -13,8 +21,25 @@ function engine(){
             $uar[$process[$i]]=$process[$i+1];    
         }
         $var['pag']=$uar['pag'];
+        $var['lang']=$uar['lang'];
+    }else{
+        if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+            $var['ip'] = $_SERVER['HTTP_CLIENT_IP'];
+        } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+            $var['ip'] = $_SERVER['HTTP_X_FORWARDED_FOR'];
+        } else {
+            $var['ip'] = $_SERVER['REMOTE_ADDR'];
+        }
+        $cCode=file_get_contents("http://ipinfo.io/{$var['ip']}/country");
+            
+        $txtDB->setColWh(array('cCode'));
+        $txtDB->setValWh(array($cCode));
+        $res=$txtDB->select('languages');
+            
+        if(empty($res['id'])){$var['lang']=$uar['lang']=$testo['defaultL'];}
+        else {$var['lang']=$uar['lang']=$res['id'];}
+            
     }
-    
 }
 
 function toUrl(){
@@ -36,68 +61,37 @@ function langMAKER($comm){
     global $kar;
     global $var;
     global $uar;
+    global $testo;
     global $txtDB;
     
-    $rarray=array();
-
-    $rarray['str']=$txtDB->select('languages');
-
-    for ($i=0;$i<$rarray['str']['num'];$i++){
-        if ($rarray['str']['defaultL'][$i]=='yes')$rarray['defaultL']=$rarray['str']['id'][$i];
-    }
-
-    if (!isset($uar['lang'])){
-        if (isset($_SESSION['lang'])){
-            $uar['lang']=$_SESSION['lnag'];
-        }else{
-            if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
-                $var['ip'] = $_SERVER['HTTP_CLIENT_IP'];
-            } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
-                $var['ip'] = $_SERVER['HTTP_X_FORWARDED_FOR'];
-            } else {
-                $var['ip'] = $_SERVER['REMOTE_ADDR'];
-            }
-            $cCode=file_get_contents("http://ipinfo.io/{$var['ip']}/country");
-            
-            $txtDB->setColWh(array('cCode'));
-            $txtDB->setValWh(array($cCode));
-            $res=$txtDB->select('languages');
-            if(empty($res['id']))$uar['lang']=$rarray['defaultL'];
-            else $uar['lang']=$res['id'];
-        }
-    }
-    
-    for ($i=0;$i<$rarray['str']['num'];$i++){
-        if ($rarray['str']['id'][$i]==$var['lang']){
+    for ($i=0;$i<$testo['str']['num'];$i++){
+        if ($testo['str']['id'][$i]==$var['lang']){
             $row=$txtDB->listTable('languages');
             foreach($row as $key => $value){
-                $rarray['curent'][$value]=$rarray['str'][$value][$i];
+                $testo['curent'][$value]=$testo['str'][$value][$i];
             }
         }
     }
     
     for ($j=0;$j<$comm['num'];$j++){
         $txtDB->setColWh(array('languages','pages'));
-        $txtDB->setValWh(array($uar['lang'],$comm['idc'][$j]));
+        $txtDB->setValWh(array($var['lang'],$comm['idc'][$j]));
         $array=$txtDB->select('txtWeb');
         for ($i=0;$i<$array['num'];$i++){
-            $rarray[$comm['idc'][$j]][$array['rifTxt'][$i]]=$array['txt'][$i];
-            $rarray[$comm['idc'][$j]][$array['rifTxt'][$i]]['id']=$array['id'][$i];
+            $testo[$comm['idc'][$j]][$array['rifTxt'][$i]]=$array['txt'][$i];
+            $testo[$comm['idc'][$j]][$array['rifTxt'][$i]]['id']=$array['id'][$i];
+            $testo[$comm['idc'][$j]][$array['rifTxt'][$i]]['sections']=$array['sections'][$i];
         }
     }
-    
-    
 
     $txtDB->setColWh(array('languages','pages'));
     $txtDB->setValWh(array($var['lang'],$var['pag']));
     $array=$txtDB->select('txt');
     for ($i=0;$i<$array['num'];$i++){
-        $rarray[$var['Xpag']][$array['rifTxt'][$i]]=$array['txt'][$i];
-        $rarray[$var['Xpag']][$array['rifTxt'][$i]]['type']=$array['type'][$i];
-        $rarray[$var['Xpag']][$array['rifTxt'][$i]]['id']=$array['id'][$i];
+        $testo[$var['pag']][$array['rifTxt'][$i]]=$array['txt'][$i];
+        $testo[$var['pag']][$array['rifTxt'][$i]]['type']=$array['type'][$i];
+        $testo[$var['pag']][$array['rifTxt'][$i]]['id']=$array['id'][$i];
     }
-
-    return $rarray;
 }
 
 

@@ -1,7 +1,4 @@
 <?php
-// Inizializzazione Array lingua
-$langar=array();
-
 // Definizione Array Costanti
 $kar=array(
      'dbMAIN'    => 'CTrayMainDB'   // Name of your database

@@ -8,10 +8,6 @@ require '../CONFIG/site.php';
 require '../CLASSANDFUNC/Db2Ar.php';
 require '../CLASSANDFUNC/function.php';
 
-
-//SetUp
-engine();
-
 // init DataBase
 $Wh='Out';
 if($kar['noInt']){
@@ -30,8 +26,11 @@ if($kar['noInt']){
 }
 $txtDB=new Db2Ar($kar['dbhost'.$Wh],$kar['dbuser'],$kar['dbpw'],$kar['dbTXT']);
 
-//SetUp Testo
-$testo=langMAKER($definitions['commonTxt']);
+//SetUp
+engine();
+
+//Creazione array Testo
+langMAKER($definitions['commonTxt']);
 
 //Inizio codice Sito
 

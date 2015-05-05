@@ -45,18 +45,15 @@
 </tr>
 </table>
 <?php
-
-DBtoAR::$colonne=array('lanID','Xsez','Xpag','rifTxt','txt','ID');
-DBtoAR::$dove=array($var['Xlang']);
-DBtoAR::$valori=array('Xsez','Xpag');
-DBtoAR::$tabella='wbtxtz';
-$array=DBtoAR::selectSeparated();
+$txtDB->setColWh(array('languages'));
+$txtDB->setValWh(array($var['lang']));
+$txtDB->setColOr(array('sections','pages'));
+$array=$txtDB->select('txtWeb');
 
 
 echo '
 <table align="center" width="600" cellpadding="0">
 ';
-$var['rediMod']=rediMod('Xpag','Xsez');
 $giro=0;
 for ($i=0;$i<$array['num'];$i++){
 if($giro==10)$giro=0;
