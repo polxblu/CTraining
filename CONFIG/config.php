@@ -20,8 +20,9 @@ $kar=array(
 
 $var=array(
      'pag'    => 'home'  // variabile di sezione Sezione Sito
-    ,'er'      => '&nbsp;'  // variabile di errore
-    ,'idx'     => array (  // variabile di randomizzazione per l'index
+    ,'menu'   => 'home'  // variabile di errore
+    ,'er'     => '&nbsp;'  // variabile di errore
+    ,'idx'    => array (  // variabile di randomizzazione per l'index
                        'gon'    =>  true   //Variabile primo giro
                       ,'round'  =>  0      //Variabile reset
                       )

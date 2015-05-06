@@ -8,6 +8,9 @@ require '../CONFIG/site.php';
 require '../CLASSANDFUNC/Db2Ar.php';
 require '../CLASSANDFUNC/function.php';
 
+//Siamo in pagina ADMIN
+$var['menu']=$uar['menu']='admin';
+
 // init DataBase
 $Wh='Out';
 if($kar['noInt']){
@@ -30,7 +33,7 @@ $txtDB=new Db2Ar($kar['dbhost'.$Wh],$kar['dbuser'],$kar['dbpw'],$kar['dbTXT']);
 engine();
 
 //Creazione array Testo
-langMAKER($definitions['commonTxt']);
+langMAKER($var['lang'],$var['menu'],$var['pag']);
 
 //Inizio codice Sito
 

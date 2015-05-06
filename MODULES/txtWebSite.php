@@ -62,7 +62,7 @@ if (is_int($i/2)){
    $var['fontColor']='#F0'.$giro.'F00';
 }
 $giro++;
-$uar['pag']='chgTXT';toUrl();
+$uar['pag']='chgText';toUrl();
 echo'
 <tr>
 	<td style="border-right:'.$var['cornColor'].';" align="right" valign="bottom">

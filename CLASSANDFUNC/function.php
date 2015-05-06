@@ -68,16 +68,14 @@ function toUrl(){
     
 }
 
-function langMAKER($comm){
+function langMAKER($lang,$menu,$pag){
     
-    global $kar;
-    global $var;
-    global $uar;
+    global $definitions;
     global $testo;
     global $txtDB;
     
     for ($i=0;$i<$testo['str']['num'];$i++){
-        if ($testo['str']['id'][$i]==$var['lang']){
+        if ($testo['str']['id'][$i]==$lang){
             $row=$txtDB->listTable('languages');
             foreach($row as $key => $value){
                 $testo['curent'][$value]=$testo['str'][$value][$i];
@@ -85,24 +83,20 @@ function langMAKER($comm){
         }
     }
     
-    for ($j=0;$j<$comm['num'];$j++){
+    for ($j=0;$j<$definitions['commonTxt']['num'];$j++){
         $txtDB->setColWh(array('languages','pages'));
-        $txtDB->setValWh(array($var['lang'],$comm['idc'][$j]));
+        $txtDB->setValWh(array($lang,$definitions['commonTxt']['idc'][$j]));
         $array=$txtDB->select('txtWeb');
         for ($i=0;$i<$array['num'];$i++){
-            $testo[$comm['idc'][$j]][$array['rifTxt'][$i]]=$array['txt'][$i];
-            $testo[$comm['idc'][$j]][$array['rifTxt'][$i].'id']=$array['id'][$i];
-            $testo[$comm['idc'][$j]][$array['rifTxt'][$i].'sections']=$array['sections'][$i];
+            $testo[$definitions['commonTxt']['idc'][$j]][$array['rifTxt'][$i]]=$array['txt'][$i];
         }
     }
 
-    $txtDB->setColWh(array('languages','pages'));
-    $txtDB->setValWh(array($var['lang'],$var['pag']));
-    $array=$txtDB->select('txt');
+    $txtDB->setColWh(array('languages','pages','sections'));
+    $txtDB->setValWh(array($lang,$pag,$menu));
+    $array=$txtDB->select('txtWeb');
     for ($i=0;$i<$array['num'];$i++){
-        $testo[$var['pag']][$array['rifTxt'][$i]]=$array['txt'][$i];
-        $testo[$var['pag']][$array['rifTxt'][$i]]['type']=$array['type'][$i];
-        $testo[$var['pag']][$array['rifTxt'][$i]]['id']=$array['id'][$i];
+        $testo[$pag][$array['rifTxt'][$i]]=$array['txt'][$i];
     }
 }
 

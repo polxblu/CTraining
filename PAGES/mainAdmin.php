@@ -14,8 +14,14 @@
           require('../COMMON/chgImage.php');
 	  break;
 
+	  case 'chgText':// Pagina Cambio Testi
+          require('../COMMON/chgText.php');
+	  break;
+
 	  default://LogOut  DEVE ASSOLUTAMENTE ESSERE il ULTIMO
-          echo 'Ciao!';
+          echo $testo['home']['intro'].'<br/>';
+          print_r($testo);
+          
 	  break;
 
    }
