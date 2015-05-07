@@ -18,7 +18,9 @@ function engine(){
     global $kar;
     global $var;
     global $txtDB;
+    global $dataDB;
     global $testo;
+    global $liste;
 
     $testo['str']=$txtDB->select('languages');
 
@@ -95,8 +97,12 @@ function langMAKER($lang,$menu,$pag){
     $txtDB->setColWh(array('languages','pages','sections'));
     $txtDB->setValWh(array($lang,$pag,$menu));
     $array=$txtDB->select('txtWeb');
-    for ($i=0;$i<$array['num'];$i++){
-        $testo[$pag][$array['rifTxt'][$i]]=$array['txt'][$i];
+    if ($array['num']==1){
+        $testo[$pag][$array['rifTxt']]=$array['txt'];
+    }else{
+        for ($i=0;$i<$array['num'];$i++){
+            $testo[$pag][$array['rifTxt'][$i]]=$array['txt'][$i];
+        }
     }
 }
 

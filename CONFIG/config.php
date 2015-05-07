@@ -2,6 +2,7 @@
 // Definizione Array Costanti
 $kar=array(
      'dbMAIN'    => 'CTrayMainDB'   // Name of your database
+    ,'dbDATA'    => 'CTrayDataDB'       // Name of your database
     ,'dbTXT'     => 'CTrayTxtDB'       // Name of your database
     ,'dbuser'    => 'SColombo'       // Username used to access it.
     ,'dbpw'      => '2EYGBKnneZQFWD9B'     // Password used to access it

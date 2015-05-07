@@ -3,7 +3,11 @@
    switch ($var['pag']){
 
 	  case 'webTxt':// Testi interni sito
-          require('../MODULES/txtWebSite.php');
+          require('../MODULES/adminTxtWebSite.php');
+	  break;
+
+	  case 'category':// Testi interni sito
+          require('../MODULES/adminCategories.php');
 	  break;
 
 	  case 'lingue':// Pagina modifica aggiunta lingue
@@ -19,7 +23,8 @@
 	  break;
 
 	  default://LogOut  DEVE ASSOLUTAMENTE ESSERE il ULTIMO
-          echo $testo['home']['intro'].'<br/>';
+          
+          echo '<br/>'.$testo['home']['intro'].'<br/><br/>';
           print_r($testo);
           
 	  break;

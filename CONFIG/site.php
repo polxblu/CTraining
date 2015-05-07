@@ -1,12 +1,17 @@
 <?php
 $uar=array(); //inizzializzazione array x URL
 $testo=array(); //inizzializzazione array x TESTO
-
+$liste=array( //inizzializzazione array dele Liste e categorie
+      'type'  => array (  // Tipi di categorie
+                       'num'    =>  2   //numero di oggetti
+                      ,'idc'  =>  array('main','slave')      //definizione di oggetti
+                      )
+     );   
 // Definizione Array Costruzione Sito
 $definitions=array(
       'commonTxt'  => array (  // Tipi di Testo
-                       'num'    =>  5   //numero di oggetti
-                      ,'idc'  =>  array('menu','errors','buttons','login','common')      //definizione di oggetti
+                       'num'    =>  6   //numero di oggetti
+                      ,'idc'  =>  array('menu','errors','buttons','login','common','category')      //definizione di oggetti
                       )
      ,'pagesTxt'  => array (  // Tipi di Testo
                        'num'    =>  1   //numero di oggetti
@@ -14,8 +19,8 @@ $definitions=array(
                       )
      ,'menu'  => array (  // Elenco menu
                       'admin'  => array (  // Elenco menu admin
-                             'num'  =>  3   //numero di oggetti
-                            ,'idc'  =>  array('home','webTxt','lingue')     //definizione di oggetti
+                             'num'  =>  4   //numero di oggetti
+                            ,'idc'  =>  array('home','category','webTxt','lingue')     //definizione di oggetti
                             ,'priv' =>  array('no','usage','si')      //definizione di oggetti
                             )
                       )

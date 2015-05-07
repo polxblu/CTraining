@@ -227,8 +227,10 @@ class Db2Ar{
             }
         }else{
             $result=mysql_fetch_array($res);
+            $result['num']=mysql_affected_rows();
         }
         
+        mysql_free_result($res);
         $this->resVar();
         return $result;
     }

@@ -28,6 +28,7 @@ if($kar['noInt']){
     $uar['mysqlWh']=$Wh;
 }
 $txtDB=new Db2Ar($kar['dbhost'.$Wh],$kar['dbuser'],$kar['dbpw'],$kar['dbTXT']);
+$dataDB=new Db2Ar($kar['dbhost'.$Wh],$kar['dbuser'],$kar['dbpw'],$kar['dbDATA']);
 
 //SetUp
 engine();
@@ -87,7 +88,12 @@ if (isset($_POST['ACT'])){
 
 //Modifica Testo
 	  case $testo['buttons']['chgTXT']:
-          require('../CODES/modTXT.php');
+          require('../CODES/chgTXT.php');
+	  break;
+
+//Modifica Testo
+	  case $testo['buttons']['addCategory']:
+          require('../CODES/addCategory.php');
 	  break;
 
 
@@ -107,6 +113,7 @@ include_once('loader.php');
 
 //close DB
 unset($txtDB);
+unset($dataDB);
 
 // zona dedicata al debug
 if ($kar['debug']) include_once '../CLASSANDFUNC/debug.php';
