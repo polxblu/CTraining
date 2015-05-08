@@ -9,6 +9,7 @@ class Db2Ar{
     var $joinMode='INNER';// Metodo del join Default INNER
     var $distinct=false;//Se true fa un select distinct
     var $random=false;//Se true ritorno gli elementi in ordine cosuale
+    var $list=false;//Se true ritorno forza array di rotorno con idndicece numerico, anche con un solo risultato 
     var $opeWh=array();//Operatori di condizione per il WHERE Default '='
     var $typWh=array();// operatori di tipo AND o OR per WHERE ignora indice 0 Default AND
     var $colWh=array();//Colonne di puntamento per WHERE
@@ -45,7 +46,7 @@ class Db2Ar{
     function resVar(){
   	    $this->dirSel = 'ASC';
         $this->joinMode='INNER';
-        $this->distinct = $this->random = false;
+        $this->list=$this->distinct = $this->random = false;
         $this->colDt=$this->valDt=$this->typWh=$this->opeWh=$this->colWh=$this->valWh=$this->colOr=$this->colGr=array();
     }
   
@@ -70,6 +71,8 @@ class Db2Ar{
     function setdirSel($in){$this->dirSel=$in;}
 
     function setDistinct($in){$this->distinct=$in;}
+  
+    function forceList($in){$this->list=true;}
   
     function listTable($table){
         $temp = mysql_list_fields($this->dbname, $table, $this->db);
@@ -175,6 +178,7 @@ class Db2Ar{
         $typWh = Opzionale operatori di tipo AND o OR per WHERE ignora indice 0 Default AND (array)
         $colWh = Opzionale colonne di puntamento per WHERE (array)
         $valWh = Opzionale valori di Ricerca per WHERE (array)
+        $list  = Opzionale se true forza il risultato con indice numerico
         $tabIn = tabella puntata (campo singolo)
     */
 
@@ -219,15 +223,20 @@ class Db2Ar{
         $result['num']=mysql_affected_rows();
         if( ($result['num']>1) ||  ( $result['num']==1 && !(isset($this->colWh[0])) ) ){
             foreach ($col as $key => $value){
-                if ($key !== 'num'){
-                    for ($i=0;$i<$result['num'];$i++){
-                        $result[$value][$i]=mysql_result($res,$i,$value);
-                    }
+                for ($i=0;$i<$result['num'];$i++){
+                    $result[$value][$i]=mysql_result($res,$i,$value);
                 }
             }
         }else{
-            $result=mysql_fetch_array($res);
-            $result['num']=mysql_affected_rows();
+            if ($result['num']>0){
+                if($this->list){
+                    foreach ($col as $key => $value){
+                        $result[$value][0]=mysql_result($res,0,$value);
+                    }
+                }else{
+                    $result=mysql_fetch_array($res);
+                }
+            }
         }
         
         mysql_free_result($res);
@@ -297,6 +306,7 @@ class Db2Ar{
             }
         }
 
+        mysql_free_result($res);
         return $result;
     }
 

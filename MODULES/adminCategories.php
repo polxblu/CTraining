@@ -1,4 +1,4 @@
-<?php include_once('../CLASSANDFUNC/categoriesJS.php'); ?>
+<?php print_r($liste); include_once('../CLASSANDFUNC/categoriesJS.php'); ?>
 <div id="newWbTxt">
 <table align="center" width="100%" cellpadding="0">
 <tr>

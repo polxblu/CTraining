@@ -56,6 +56,35 @@ function engine(){
     }
 }
 
+function listMaker(){
+    
+    global $testo;
+    global $dataDB;
+    global $liste;
+    
+    $dataDB->forceList();
+    $dataDB->setColWh(array('type'));
+    $dataDB->setValWh(array($liste['type']['idc'][0]));
+    $res=$dataDB->select('category');
+    
+    $liste['main']['num']=$res['num'];
+    for ($i=0;$i<$res['num'];$i++){
+        $liste['main']['idc'][$i]=$res['id'][$i];
+        $liste['main']['name'][$i]=$testo['category'][$res['id'][$i]];
+        
+        $dataDB->forceList();
+        $dataDB->setColWh(array('who'));
+        $dataDB->setValWh(array($res['id'][$i]));
+        $sub=$dataDB->select('category');
+        
+        $liste[$res['id'][$i]]['num']=$sub['num'];
+        for ($j=0;$j<$sub['num'];$j++){
+            $liste[$res['id'][$i]]['idc'][$j]=$sub['id'][$j];
+            $liste[$res['id'][$i]]['name'][$j]=$testo['category'][$sub['id'][$j]];
+        }
+    }
+}
+
 function toUrl(){
     
     global $uar;
@@ -86,6 +115,7 @@ function langMAKER($lang,$menu,$pag){
     }
     
     for ($j=0;$j<$definitions['commonTxt']['num'];$j++){
+        $txtDB->forceList();
         $txtDB->setColWh(array('languages','pages'));
         $txtDB->setValWh(array($lang,$definitions['commonTxt']['idc'][$j]));
         $array=$txtDB->select('txtWeb');
@@ -94,15 +124,12 @@ function langMAKER($lang,$menu,$pag){
         }
     }
 
+    $txtDB->forceList();
     $txtDB->setColWh(array('languages','pages','sections'));
     $txtDB->setValWh(array($lang,$pag,$menu));
     $array=$txtDB->select('txtWeb');
-    if ($array['num']==1){
-        $testo[$pag][$array['rifTxt']]=$array['txt'];
-    }else{
-        for ($i=0;$i<$array['num'];$i++){
-            $testo[$pag][$array['rifTxt'][$i]]=$array['txt'][$i];
-        }
+    for ($i=0;$i<$array['num'];$i++){
+        $testo[$pag][$array['rifTxt'][$i]]=$array['txt'][$i];
     }
 }
 

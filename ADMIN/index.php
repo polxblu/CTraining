@@ -36,6 +36,9 @@ engine();
 //Creazione array Testo
 langMAKER($var['lang'],$var['menu'],$var['pag']);
 
+//Creazione array Liste
+listMAKER();
+
 //Inizio codice Sito
 
 if (isset($_POST['ACT'])){

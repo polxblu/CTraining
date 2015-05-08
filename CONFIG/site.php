@@ -1,12 +1,14 @@
 <?php
 $uar=array(); //inizzializzazione array x URL
 $testo=array(); //inizzializzazione array x TESTO
+
 $liste=array( //inizzializzazione array dele Liste e categorie
       'type'  => array (  // Tipi di categorie
                        'num'    =>  2   //numero di oggetti
                       ,'idc'  =>  array('main','slave')      //definizione di oggetti
                       )
      );   
+
 // Definizione Array Costruzione Sito
 $definitions=array(
       'commonTxt'  => array (  // Tipi di Testo
