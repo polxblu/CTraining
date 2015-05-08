@@ -72,7 +72,7 @@ class Db2Ar{
 
     function setDistinct($in){$this->distinct=$in;}
   
-    function forceList($in){$this->list=true;}
+    function forceList(){$this->list=true;}
   
     function listTable($table){
         $temp = mysql_list_fields($this->dbname, $table, $this->db);
