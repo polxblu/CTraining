@@ -94,9 +94,19 @@ if (isset($_POST['ACT'])){
           require('../CODES/chgTXT.php');
 	  break;
 
-//Modifica Testo
+//Modifica Aggiungi categoria
 	  case $testo['buttons']['addCategory']:
           require('../CODES/addCategory.php');
+	  break;
+
+//Modifica Modifica Categoria
+	  case $testo['buttons']['modRifCategory']:
+          require('../CODES/modCategory.php');
+	  break;
+
+//Elimina Categoria
+	  case $testo['buttons']['delCategory']:
+          require('../CODES/delCategory.php');
 	  break;
 
 

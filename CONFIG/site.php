@@ -7,6 +7,14 @@ $liste=array( //inizzializzazione array dele Liste e categorie
                        'num'    =>  2   //numero di oggetti
                       ,'idc'  =>  array('main','slave')      //definizione di oggetti
                       )
+     ,'property'  => array (  // propieta liste Tabelle
+                       'num'    =>  3   //numero di oggetti
+                      ,'idc'  =>  array(
+                            'videoCategory'      //Workout, panca,etc    
+                           ,'videoMuscleGroup'   // gruppo muscolare
+                           ,'videoDifficult'     // Difficolta    
+                           )         //definizione di oggetti
+                      )
      );   
 
 // Definizione Array Costruzione Sito
@@ -21,8 +29,8 @@ $definitions=array(
                       )
      ,'menu'  => array (  // Elenco menu
                       'admin'  => array (  // Elenco menu admin
-                             'num'  =>  4   //numero di oggetti
-                            ,'idc'  =>  array('home','category','webTxt','lingue')     //definizione di oggetti
+                             'num'  =>  5   //numero di oggetti
+                            ,'idc'  =>  array('home','video','category','webTxt','lingue')     //definizione di oggetti
                             ,'priv' =>  array('no','usage','si')      //definizione di oggetti
                             )
                       )

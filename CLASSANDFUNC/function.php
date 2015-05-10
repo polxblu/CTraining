@@ -71,6 +71,7 @@ function listMaker(){
     for ($i=0;$i<$res['num'];$i++){
         $liste['main']['idc'][$i]=$res['id'][$i];
         $liste['main']['name'][$i]=$testo['category'][$res['id'][$i]];
+        $liste['main']['who'][$i]=$res['who'][$i];
         
         $dataDB->forceList();
         $dataDB->setColWh(array('who'));
@@ -81,6 +82,21 @@ function listMaker(){
         for ($j=0;$j<$sub['num'];$j++){
             $liste[$res['id'][$i]]['idc'][$j]=$sub['id'][$j];
             $liste[$res['id'][$i]]['name'][$j]=$testo['category'][$sub['id'][$j]];
+            $liste[$res['id'][$i]]['who'][$j]=$sub['who'][$j];
+        }
+    }
+    for ($i=0;$i<$liste['property']['num'];$i++){
+        for ($j=0;$j<$liste['main']['num'];$j++){
+            if($liste['main']['who'][$j]==$liste['property']['idc'][$i]){
+                $liste[$liste['property']['idc'][$i]]['num']=$liste[$liste['main']['idc'][$j]]['num'];
+                $liste[$liste['property']['idc'][$i]]['nameMain']=$liste['main']['name'][$j];
+                $liste[$liste['property']['idc'][$i]]['idcMain']=$liste['main']['idc'][$j];
+                    for ($f=0;$f<$liste[$liste['property']['idc'][$i]]['num'];$f++){
+                        $liste[$liste['property']['idc'][$i]]['name'][$f]=$liste[$liste['main']['idc'][$j]]['name'][$f];
+                        $liste[$liste['property']['idc'][$i]]['idc'][$f]=$liste[$liste['main']['idc'][$j]]['idc'][$f];
+                        $liste[$liste['property']['idc'][$i]]['who'][$f]=$liste[$liste['main']['idc'][$j]]['who'][$f];
+                    }    
+            }
         }
     }
 }

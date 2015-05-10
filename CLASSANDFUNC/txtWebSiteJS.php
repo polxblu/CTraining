@@ -21,19 +21,6 @@ for ($i=0;$i<$definitions['pagesTxt']['num'];$i++){
 }
 ?>
 
-function chgSelTxt(nS){
-	cDiv=document.forms['selSections'+nS].elements['sections'+nS].value;
-	cTar=document.forms['selSections'+nS].elements['pages'+nS];
-
-	cTar.options.length=0;
-	cTar.options[0]=new Option('','');
-	if (cDiv!='') {
-       for(var i = 0; i < contenuto[cDiv+'Num'];i++){
-          cTar.options[i+1]=new Option(contenuto[cDiv+i],contenuto[cDiv+i]);
-       }
-    }
-}
-
 //-->
 </script>
 

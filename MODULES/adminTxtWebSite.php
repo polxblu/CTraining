@@ -7,15 +7,15 @@
 
 <table align="center">
 <tr>
-	<td align="center" valign="middle">sections</td></td>
-	<td align="center" valign="middle">pages</td>
-	<td align="center" valign="middle">rifTxt</td>
-	<td align="center" valign="middle">txt</td>
+	<td align="center" valign="middle"><?php echo $testo['webTxt']['wTxtSections'];?></td></td>
+	<td align="center" valign="middle"><?php echo $testo['webTxt']['wTxtPage'];?></td>
+	<td align="center" valign="middle"><?php echo $testo['webTxt']['textReference'];?></td>
+	<td align="center" valign="middle"><?php echo $testo['common']['commText'];?></td>
 	<td align="center" valign="middle"><?php echo $var['er'];?></td>
 </tr>
 <tr>
 	<td align="center" valign="middle">
-		<select onChange="chgSelTxt('N');" name="sectionsN" id="sectionsN" size="1">
+		<select onChange="chgSelTxt('selSections','sections','pages','N','');" name="sectionsN" id="sectionsN" size="1">
             <option></option>
             <option value="commonTxt">commonTxt</option>
 <?php
@@ -84,8 +84,8 @@ echo'
 <tr>
 	<td style="border-right:'.$var['cornColor'].';" align="right" valign="bottom">
 		<form action="index.php?token='.$_GET['token'].'" method="post" name="selSections'.$i.'" id="selSections'.$i.'">
-		   Sections&nbsp;
-		   <select onChange="chgSelTxt(\''.$i.'\');" name="sections'.$i.'" id="sections'.$i.'" size="1">
+		   '.$testo['webTxt']['wTxtSections'].'&nbsp;
+		   <select onChange="chgSelTxt(\'selSections\',\'sections\',\'pages\',\''.$i.'\',\'\');" name="sections'.$i.'" id="sections'.$i.'" size="1">
               <option></option>
    			  <option value="commonTxt" ';if ($array['sections'][$i]=='commonTxt')echo' selected '; echo '>commonTxt</option>
               ';
@@ -97,7 +97,7 @@ echo'
               }
    			  echo '
 		   </select>
-		   &nbsp;Pages&nbsp;
+		   &nbsp;'.$testo['webTxt']['wTxtPage'].'&nbsp;
 		   <select name="pages'.$i.'" id="pages'.$i.'" size="1">
               <option></option>
               ';
@@ -118,7 +118,7 @@ echo'
               }
               echo '
 		   </select>
-		   &nbsp;rifTxt&nbsp;
+		   &nbsp;'.$testo['webTxt']['textReference'].'&nbsp;
            <input name="rifTxt" type="text" value="'.$array['rifTxt'][$i].'"/>
            <input name="rifTxtOld" type="hidden" value="'.$array['rifTxt'][$i].'"/>
            <input name="id" type="hidden" value="'.$array['id'][$i].'"/>
@@ -132,7 +132,7 @@ echo'
 <tr>
 	<td style="';if($i!==$array['num']-1)echo'border-bottom:'.$var['cornColor'].';';echo'border-right:'.$var['cornColor'].';" align="right" valign="bottom">
 		<form action="index.php?token='.$_GET['token'].'" name="clrTxT" method="post">
-            Elimina Record
+            '.$testo['common']['deleteSure'].'
             &nbsp;
             <input type="checkbox" value="delSure" id="delSure" name="delSure" />
             &nbsp;

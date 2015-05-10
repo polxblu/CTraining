@@ -2,6 +2,10 @@
 <?php
    switch ($var['pag']){
 
+	  case 'video':// Testi interni sito
+          require('../MODULES/adminVideo.php');
+	  break;
+
 	  case 'webTxt':// Testi interni sito
           require('../MODULES/adminTxtWebSite.php');
 	  break;
@@ -25,7 +29,6 @@
 	  default://LogOut  DEVE ASSOLUTAMENTE ESSERE il ULTIMO
           
           echo '<br/>'.$testo['home']['intro'].'<br/><br/>';
-          print_r($testo);
           
 	  break;
 

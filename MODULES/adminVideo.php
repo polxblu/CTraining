@@ -1,21 +1,23 @@
-<?php include_once('../CLASSANDFUNC/categoriesJS.php'); ?>
+<?php print_r($liste); ?>
 <div id="newWbTxt">
 <table align="center" width="100%" cellpadding="0">
 <tr>
 	<td width="100%" align="center">
-		<form action="index.php?token=<?php echo $_GET['token'];?>" method="post" name="selCategoriesN" id="selCategoriesN">
+		<form action="index.php?token=<?php echo $_GET['token'];?>" method="post">
 
 <table align="center">
 <tr>
 	<td align="center" valign="middle"><?php echo $testo['common']['commName'];?></td></td>
-	<td align="center" valign="middle"><?php echo $testo['category']['categoryType'];?></td>
-	<td align="center" valign="middle"><?php echo $testo['category']['categoryWho'];?></td>
+	<td align="center" valign="middle"><?php echo $testo['video']['admMuscGroup'];?></td>
+	<td align="center" valign="middle"><?php echo $testo['video']['amdDifficul'];?></td>
+	<td align="center" valign="middle"><?php echo $testo['video']['admCategoryV'];?></td>
+	<td align="center" valign="middle"><?php echo $testo['video']['admFreeVid'];?></td>
 	<td align="center" valign="middle"><?php echo $var['er'];?></td>
 </tr>
 <tr>
 	<td align="center" valign="middle"><input name="name" type="text" /></td>
 	<td align="center" valign="middle">
-		<select onChange="chgSelTxt('selCategories','type','who','N','N');" name="typeN" id="typeN" size="1">
+		<select name="muscleGroup" id="muscleGroup" size="1">
             <option></option>
 <?php
    			for ($j=0;$j<$liste['type']['num'];$j++){
@@ -26,13 +28,21 @@
 		</select>
     </td>
 	<td align="center" valign="middle">
-		<select name="whoN" id="whoN" size="1">
+		<select name="difficult" id="difficult" size="1">
             <option></option>
 		</select>
     </td>
 	<td align="center" valign="middle">
-            <button name="ACT" type="submit" value="<?php echo $testo['buttons']['addCategory'];?>">
-               <?php echo $testo['buttons']['addCategory'];?>
+		<select name="category" id="category" size="1">
+            <option></option>
+		</select>
+    </td>
+	<td align="center" valign="middle">
+        <input type="checkbox" value="yes" name="free" id="free" checked="checked" />
+    </td>
+	<td align="center" valign="middle">
+            <button name="ACT" type="submit" value="<?php echo $testo['buttons']['addVideo'];?>">
+               <?php echo $testo['buttons']['addVideo'];?>
             </button>
     </td>
 </tr>
@@ -43,8 +53,6 @@
 </table>
 <table align="center" width="600" cellpadding="0">
 <?php
-$dataDB->colOr['title'];
-$array=$dataDB->select('video');
 
 $giro=0;
 for ($i=0;$i<$liste[$liste['type']['idc'][0]]['num'];$i++){
@@ -107,7 +115,7 @@ echo'
            <input name="cont" type="hidden" value="'.$i.'"/>
            <input name="main" type="hidden" value="yes"/>
            <button name="ACT" type="submit" value="'.$testo['buttons']['modRifCategory'].'">
-               '.$testo['buttons']['modRifCategory'].'
+               '.$testo['buttons']['modRifWebTxt'].'
            </button>
 		</form>
     </td>
@@ -122,7 +130,7 @@ echo'
             <input name="main" type="hidden" value="yes"/>
             <input name="id" type="hidden" value="'.$liste[$liste['type']['idc'][0]]['idc'][$i].'"/>
             <button name="ACT" type="submit" value="'.$testo['buttons']['delCategory'].'">
-               '.$testo['buttons']['delCategory'].'
+               '.$testo['buttons']['delTxtWeb'].'
             </button>
 		</form>
     </td>
@@ -177,7 +185,7 @@ echo'
 		   <input name="id" type="hidden" value="'.$liste[$liste[$liste['type']['idc'][0]]['idc'][$i]]['idc'][$j].'"/>
            <input name="cont" type="hidden" value="'.$i.'d'.$j.'"/>
            <button name="ACT" type="submit" value="'.$testo['buttons']['modRifCategory'].'">
-               '.$testo['buttons']['modRifCategory'].'
+               '.$testo['buttons']['modRifWebTxt'].'
            </button>
 		</form>
     </td>
@@ -191,7 +199,7 @@ echo'
             &nbsp;
             <input name="id" type="hidden" value="'.$liste[$liste[$liste['type']['idc'][0]]['idc'][$i]]['idc'][$j].'"/>
             <button name="ACT" type="submit" value="'.$testo['buttons']['delCategory'].'">
-               '.$testo['buttons']['delCategory'].'
+               '.$testo['buttons']['delTxtWeb'].'
             </button>
 		</form>
     </td>

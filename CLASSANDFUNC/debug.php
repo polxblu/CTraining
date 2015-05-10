@@ -18,8 +18,9 @@ echo '<font color="#ff0000"> '.$key.' <=> '.$value.'<br></font>';
 }
 echo '</td><td valign="top" align="left" style="border-right:1px black solid;">POST<br>';
 foreach($_POST as $key => $value){
-echo '<font color="#ff0000"> '.$key.' <=> '.$value.'<br></font>';
-}
+    if(($key!=='dToken')&&($key!=='token')){if(!is_array($value)){
+        echo '<font color="#ff0000"> '.$key.' <=> '.$value.'<br></font>';
+}}}
 echo '</td><td valign="top" align="left">SESSION<br>';
 foreach($_SESSION as $key => $value){
 echo '<font color="#ff0000"> '.$key.' <=> '.$value.'<br></font>';
