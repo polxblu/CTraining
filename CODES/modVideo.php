@@ -1,5 +1,9 @@
 <?php
-if(empty($_POST['difficult'.$_POST['cont']])||empty($_POST['category'.$_POST['cont']])||empty($_POST['muscleGroup'.$_POST['cont']])){
+if(
+      empty($_POST['difficult'.$_POST['cont']])
+    ||empty($_POST['category'.$_POST['cont']])
+    ||empty($_POST['muscleGroup'.$_POST['cont']])
+){
     $var['er']=$testo['errors']['emptyField'];    
 }else{    
     if(isset($_POST['free'.$_POST['cont']])) $var['yn']='yes'; else $var['yn']='no';

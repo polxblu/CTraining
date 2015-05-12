@@ -25,14 +25,18 @@ $definitions=array(
                       ,'idc'  =>  array('menu','errors','buttons','login','common','category')      //definizione di oggetti
                       )
      ,'pagesTxt'  => array (  // Tipi di Testo
-                       'num'    =>  1   //numero di oggetti
-                      ,'idc'  =>  array('admin')      //definizione di oggetti
+                       'num'    =>  2   //numero di oggetti
+                      ,'idc'  =>  array('admin','home')      //definizione di oggetti
                       )
      ,'menu'  => array (  // Elenco menu
                       'admin'  => array (  // Elenco menu admin
                              'num'  =>  5   //numero di oggetti
                             ,'idc'  =>  array('home','video','category','webTxt','lingue')     //definizione di oggetti
-                            ,'priv' =>  array('no','usage','si')      //definizione di oggetti
+                            ,'priv' =>  array('no','si','si','usage','si')      //definizione di oggetti
+                            )
+                     ,'home'  => array (  // Elenco menu admin
+                             'num'  =>  1   //numero di oggetti
+                            ,'idc'  =>  array('home')     //definizione di oggetti
                             )
                       )
     );

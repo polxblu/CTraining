@@ -15,6 +15,14 @@ switch ($_POST['type']){
       $var['txt2Mod']=$_POST['txt'];
       $var['table']='txtWeb';
    break;
+
+   case 'video': //Cambio Testo Video
+      $txtDB->setColWh(array('rifTxt','languages'));
+      $txtDB->setValWh(array($_POST['id'],$var['lang']));
+      $var['inputTxt']='input';
+      $var['txt2Mod']=$_POST['txt'];
+      $var['table']='txtData';
+   break;
 }
 
 if (!isset($_POST['round'])){

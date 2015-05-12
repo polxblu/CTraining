@@ -11,6 +11,7 @@ $kar=array(
     ,'debug'	 =>  true	// Sito in modalità debug
     ,'noInt'	 =>  false	// Sito in modalità sviluppo senza internete
     ,'flagdir'	 =>  'IMAGES/LANG/'	// Directory Bandierine
+    ,'videodir'	 =>  'VIDEO/'	// Directory Bandierine
     ,'imgdir'	 =>  'image/upload/'	// Directory Immagini
     ,'imgwid'    => 600     // larghezza immagine
     ,'imghig'    => 600     // altezza immagine

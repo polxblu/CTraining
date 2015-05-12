@@ -237,15 +237,26 @@ if ($_FILES[$img]['error']!==0){
 return $temp;
 }
 
-function chkFile($img){
+function chkFile($file,$type){
 
 $temp='';
-if ($_FILES[$img]['error']!==0){
-	$temp=$_FILES[$img]['error'];
-}elseif (( $_FILES["video"]["type"] == "video/mp4" ||  $_FILES["video"]["type"] == "video/mpeg" ||  $_FILES["video"]["type"] == "video/avi" ||  $_FILES["video"]["type"] == "video/msvideo" ||  $_FILES["video"]["type"] == "video/x-msvideo" || $_FILES["video"]["type"] == "video/ogg")){
-    $temp='ok';
-}else $temp='type';
-
+if ($_FILES[$file]['error']!==0){
+	$temp=$_FILES[$file]['error'];
+}else{
+    $temp='type';
+    if ($type='video'){
+        if (    $_FILES[$file]["type"] == "video/mp4" 
+            ||  $_FILES[$file]["type"] == "video/mpeg" 
+            ||  $_FILES[$file]["type"] == "video/avi" 
+            ||  $_FILES[$file]["type"] == "video/msvideo" 
+            ||  $_FILES[$file]["type"] == "video/x-msvideo" 
+            ||  $_FILES[$file]["type"] == "video/ogg"){
+                $temp='ok';
+        }elseif($type=='common'){
+            $temp='ok';
+        }    
+    } 
+}
 return $temp;
 }
 

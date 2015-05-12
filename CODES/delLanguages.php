@@ -1,7 +1,7 @@
 <?php
 if(isset($_POST['delSure'])){
-    if ($_POST['flag']!=='noPicz')unlink($kar['flagdir'].$_POST['flag']);
-    if ($_POST['flago']!=='noPicz')unlink($kar['flagdir'].$_POST['flago']);
+    if ($_POST['flag']!=='noPicz')unlink('../'.$kar['flagdir'].$_POST['flag']);
+    if ($_POST['flago']!=='noPicz')unlink('../'.$kar['flagdir'].$_POST['flago']);
 
     $txtDB->setColWh(array('id'));
     $txtDB->setValWh(array($_POST['id']));

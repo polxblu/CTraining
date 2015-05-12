@@ -1,8 +1,13 @@
-<form action="index.php?token=<?php echo $_GET['token'];?>" method="post" enctype="multipart/form-data" name="chgImg" id="chgImg">
+<form action="index.php?token=<?php echo $_GET['token'];?>" method="post" enctype="multipart/form-data" name="chgImage" id="chgImage">
 <br/>
 <table>
 <tr>
 	<td align="center" colspan="2"><?php echo $var['er'];?></td>
+</tr>
+<tr>
+	<td align="center">
+       <?php echo $testo['common']['chgIMAGEFile'];?>
+    </td>
 </tr>
 <tr>
 	<td align="center" colspan="2">

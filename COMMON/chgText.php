@@ -1,8 +1,13 @@
-<form action="index.php?token=<?php echo $_GET['token'];?>" method="post" name="chgTxt" id="chgTxt">
+<form action="index.php?token=<?php echo $_GET['token'];?>" method="post" name="chgText" id="chgText">
 <table>
 <tr>
 	<td align="center">
        <?php echo $var['er'];?>
+    </td>
+</tr>
+<tr>
+	<td align="center">
+       <?php echo $testo['common']['chgTXTFile'];?>
     </td>
 </tr>
 <tr>

@@ -1,4 +1,3 @@
-<?php print_r($video);?>
 <div id="newWbTxt">
 <table align="center" width="100%" cellpadding="0">
 <tr>
@@ -69,7 +68,7 @@
 <?php
 
 $giro=0;
-for ($i=0;$i<$array['num'];$i++){
+for ($i=0;$i<$video['num'];$i++){
 if($giro==10)$giro=0;
 if (is_int($i/2)){
    $var['cornColor']='2px dashed #FF00FF';
@@ -85,30 +84,34 @@ echo'
 	<td style="border-right:'.$var['cornColor'].';" align="right" valign="bottom">
 		<form action="index.php?token='.$var['token'].'" name="clrTxT" method="post">
             <span style="color:'.$var['fontColor'].'">
-            '.$testo['common']['commName'].':&nbsp;'.$array['name'][$i].'
+            '.$testo['common']['commName'].':&nbsp;'.$video['name'][$i].'
             &nbsp;
             </span>
-            <input name="id" type="hidden" value="'.$array['id'][$i].'"/>
+            <input name="id" type="hidden" value="'.$video['id'][$i].'"/>
             <input name="type" type="hidden" value="video"/>
             <input name="round" type="hidden" value="yes"/>
-            <input name="txt" type="hidden" value="'.$array['name'][$i].'"/>
+            <input name="txt" type="hidden" value="'.$video['name'][$i].'"/>
             <input name="token" type="hidden" value="'.$_GET['token'].'"/>
             <button name="ACT" type="submit" value="'.$testo['buttons']['chgTXT'].'">
                '.$testo['buttons']['chgTXT'].'
             </button>
 		</form>
 </tr>
+';
+$uar['pag']='chgFile';toUrl();
+echo'
 <tr>
 	<td style="border-right:'.$var['cornColor'].';" align="right" valign="bottom">
 		<form action="index.php?token='.$var['token'].'" name="clrTxT" method="post">
             <span style="color:'.$var['fontColor'].'">
-            '.$testo['common']['commFile'].':&nbsp;'.$array['file'][$i].'
+            '.$testo['common']['commFile'].':&nbsp;'.$video['file'][$i].'
             &nbsp;
             </span>
-            <input name="id" type="hidden" value="'.$array['id'][$i].'"/>
+            <input name="id" type="hidden" value="'.$video['id'][$i].'"/>
             <input name="type" type="hidden" value="video"/>
             <input name="round" type="hidden" value="yes"/>
-            <input name="txt" type="hidden" value="'.$array['name'][$i].'"/>
+            <input name="file" type="hidden" value="'.$video['file'][$i].'"/>
+            <input name="name" type="hidden" value="'.$video['name'][$i].'"/>
             <input name="token" type="hidden" value="'.$_GET['token'].'"/>
             <button name="ACT" type="submit" value="'.$testo['buttons']['chgFILE'].'">
                '.$testo['buttons']['chgFILE'].'
@@ -117,14 +120,14 @@ echo'
 </tr>
 <tr>
 	<td style="border-right:'.$var['cornColor'].';" align="right" valign="bottom">
-		<form action="index.php?token='.$_GET['token'].'" method="post" name="muscleGroup'.$i.'" id="muscleGroup'.$i.'">
+		<form action="index.php?token='.$_GET['token'].'" method="post"">
 		   '.$testo['video']['admMuscGroup'].'&nbsp;
-		   <select name="type'.$i.'" id="type'.$i.'" size="1">
+		   <select name="muscleGroup'.$i.'" id="muscleGroup'.$i.'" size="1">
               <option></option>
               ';
    			for ($j=0;$j<$liste['videoMuscleGroup']['num'];$j++){
 	   			 echo '<option value="'.$liste['videoMuscleGroup']['idc'][$j].'"';
-                 if ($array['muscleGroup'][$i]==$liste['videoMuscleGroup']['idc'][$j])echo' selected'; 
+                 if ($video['muscleGroup'][$i]==$liste['videoMuscleGroup']['idc'][$j])echo' selected'; 
                  echo '>'.$liste['videoMuscleGroup']['name'][$j].'</option>
               ';
               }
@@ -136,29 +139,28 @@ echo'
               ';
    			for ($j=0;$j<$liste['videoDifficult']['num'];$j++){
 	   			 echo '<option value="'.$liste['videoDifficult']['idc'][$j].'"';
-                 if ($array['difficult'][$i]==$liste['videoDifficult']['idc'][$j])echo' selected'; 
+                 if ($video['difficult'][$i]==$liste['videoDifficult']['idc'][$j])echo' selected'; 
                  echo '>'.$liste['videoDifficult']['name'][$j].'</option>
               ';
               }
    			  echo '
 		   </select>
 		   '.$testo['video']['admCategoryV'].'&nbsp;
-		   <select name="type'.$i.'" id="category'.$i.'" category="1">
+		   <select name="category'.$i.'" id="category'.$i.'" size="1">
               <option></option>
               ';
    			for ($j=0;$j<$liste['videoCategory']['num'];$j++){
 	   			 echo '<option value="'.$liste['videoCategory']['idc'][$j].'"';
-                 if ($array['category'][$i]==$liste['videoCategory']['idc'][$j])echo' selected'; 
+                 if ($video['category'][$i]==$liste['videoCategory']['idc'][$j])echo' selected'; 
                  echo '>'.$liste['videoCategory']['name'][$j].'</option>
               ';
               }
    			  echo '
 		   </select>
            '.$testo['video']['admFreeVid'].'&nbsp;
-           <input type="checkbox" value="yes" id="free'.$i.'" name="free'.$i.'" ';if ($array['free'][$i]=='yes')echo' checked="checked" ';echo' />
-		   <input name="id" type="hidden" value="'.$liste[$liste['type']['idc'][0]]['idc'][$i].'"/>
+           <input type="checkbox" value="yes" id="free'.$i.'" name="free'.$i.'" ';if ($video['free'][$i]=='yes')echo' checked="checked" ';echo' />
+		   <input name="id" type="hidden" value="'.$video['id'][$i].'"/>
            <input name="cont" type="hidden" value="'.$i.'"/>
-           <input name="main" type="hidden" value="yes"/>
            <button name="ACT" type="submit" value="'.$testo['buttons']['modRifVideo'].'">
                '.$testo['buttons']['modRifVideo'].'
            </button>
@@ -172,8 +174,8 @@ echo'
             &nbsp;
             <input type="checkbox" value="delSure" id="delSure" name="delSure" />
             &nbsp;
-            <input name="main" type="hidden" value="yes"/>
-            <input name="id" type="hidden" value="'.$liste[$liste['type']['idc'][0]]['idc'][$i].'"/>
+            <input name="file" type="hidden" value="'.$video['file'][$i].'"/>
+            <input name="id" type="hidden" value="'.$video['id'][$i].'"/>
             <button name="ACT" type="submit" value="'.$testo['buttons']['delVideo'].'">
                '.$testo['buttons']['delVideo'].'
             </button>
