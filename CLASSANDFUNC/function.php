@@ -149,6 +149,26 @@ function langMAKER($lang,$menu,$pag){
     }
 }
 
+function videoMAKER($lang){
+    
+    global $video;
+    global $txtDB;
+    global $dataDB;
+    
+    $dataDB->forceList();
+    $dataDB->setColOr(array('file'));
+    $video=$dataDB->select('video');
+    
+    for ($i=0;$i<$video['num'];$i++){
+        
+        $txtDB->setColWh(array('languages','object','rifTxt'));
+        $txtDB->setValWh(array($lang,'video',$video['id'][$i]));
+        $array=$txtDB->select('txtData');
+        
+        $video['name'][$i]=$array['txt'];
+    }
+}
+
 
 function resizeImage($img,$fold,$mx_h,$mx_w){
 
@@ -211,6 +231,18 @@ if ($_FILES[$img]['error']!==0){
 }elseif ($_FILES[$img]['size']>$kar['upsize']){
 	$temp='size';
 }elseif (($_FILES[$img]['type']=='image/png')||($_FILES[$img]['type']=='image/gif')||($_FILES[$img]['type']=='image/jpeg')||($_FILES[$img]['type']=='image/pjpeg')){
+    $temp='ok';
+}else $temp='type';
+
+return $temp;
+}
+
+function chkFile($img){
+
+$temp='';
+if ($_FILES[$img]['error']!==0){
+	$temp=$_FILES[$img]['error'];
+}elseif (( $_FILES["video"]["type"] == "video/mp4" ||  $_FILES["video"]["type"] == "video/mpeg" ||  $_FILES["video"]["type"] == "video/avi" ||  $_FILES["video"]["type"] == "video/msvideo" ||  $_FILES["video"]["type"] == "video/x-msvideo" || $_FILES["video"]["type"] == "video/ogg")){
     $temp='ok';
 }else $temp='type';
 

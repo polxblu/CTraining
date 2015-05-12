@@ -1,6 +1,7 @@
 <?php
 $uar=array(); //inizzializzazione array x URL
 $testo=array(); //inizzializzazione array x TESTO
+$video=array(); //inizzializzazione array x VIDEO
 
 $liste=array( //inizzializzazione array dele Liste e categorie
       'type'  => array (  // Tipi di categorie

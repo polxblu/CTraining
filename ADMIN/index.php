@@ -36,8 +36,15 @@ engine();
 //Creazione array Testo
 langMAKER($var['lang'],$var['menu'],$var['pag']);
 
-//Creazione array Liste
-listMAKER();
+//Creazione array di Servizio
+if( // Array Liste
+  $var['pag']=='category'
+||$var['pag']=='video'
+)listMAKER();
+
+if( // Array Video
+  $var['pag']=='video'
+)videoMAKER($var['lang']);
 
 //Inizio codice Sito
 
@@ -94,12 +101,17 @@ if (isset($_POST['ACT'])){
           require('../CODES/chgTXT.php');
 	  break;
 
-//Modifica Aggiungi categoria
+//Modifica File
+	  case $testo['buttons']['chgFILE']:
+          require('../CODES/chgFILE.php');
+	  break;
+
+// Aggiungi categoria
 	  case $testo['buttons']['addCategory']:
           require('../CODES/addCategory.php');
 	  break;
 
-//Modifica Modifica Categoria
+//Modifica Categoria
 	  case $testo['buttons']['modRifCategory']:
           require('../CODES/modCategory.php');
 	  break;
@@ -107,6 +119,21 @@ if (isset($_POST['ACT'])){
 //Elimina Categoria
 	  case $testo['buttons']['delCategory']:
           require('../CODES/delCategory.php');
+	  break;
+
+// Aggiungi Video
+	  case $testo['buttons']['addVideo']:
+          require('../CODES/addVideo.php');
+	  break;
+
+//Modifica RiferiMenti Video
+	  case $testo['buttons']['modRifVideo']:
+          require('../CODES/modVideo.php');
+	  break;
+
+//Elimina Video
+	  case $testo['buttons']['delVideo']:
+          require('../CODES/delVideo.php');
 	  break;
 
 

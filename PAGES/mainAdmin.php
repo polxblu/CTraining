@@ -26,6 +26,10 @@
           require('../COMMON/chgText.php');
 	  break;
 
+	  case 'chgFile':// Pagina Cambio Files
+          require('../COMMON/chgFile.php');
+	  break;
+
 	  default://LogOut  DEVE ASSOLUTAMENTE ESSERE il ULTIMO
           
           echo '<br/>'.$testo['home']['intro'].'<br/><br/>';
