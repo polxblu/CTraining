@@ -22,6 +22,8 @@ body
 
 #formaazzurra
 {
+	display:inline;
+	
     position:absolute;
     height:1200px;
     width:65%;
@@ -39,10 +41,24 @@ body
     -ms-transform:rotate(26deg);
 }
 
+#formaazzurrasmall
+{
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height:650px;
+	z-index:10;
+	
+	display:none;
+	
+	background-color:rgba(69,140,204,0.5);
+}
+
 #maincontent
 {
     position:absolute;
-    top:600px;
+    top:650px;
     left:0;
     width:100%;
     height:100%;
@@ -58,8 +74,8 @@ body
     right:0;
     width:100%;
     border:none;
-    min-height:600px;
-    min-width:1172px;
+    min-height:650px;
+    min-width:1560px;
     z-index:1;
 }
 
@@ -101,13 +117,14 @@ body
     left:0;
     width:100%;
     color:white;
-    background-color:green;
+    background-color:rgba(69,140,204,1);;
     text-align:center;
     padding-top:6px;
     padding-bottom:6px;
     margin-bottom:50px;
     font-size:30px;
 }
+
 
 .step
 {
@@ -121,4 +138,26 @@ body
     float:left;
     margin:20px;
     z-index:50; 
+}
+
+.loginform
+{
+	width:100%;
+	height:25px;
+	background-color:rgba(255,255,255,0.5);
+	border:2px solid white;
+	border-radius:10px;
+}
+
+/* controlli risoluzione */
+@media(max-width: 750px)
+{
+   .sologrande
+   {
+	   display:none !important;
+   }
+   .solopiccolo
+   {
+	   display:inline !important;
+   }
 }
