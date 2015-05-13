@@ -72,7 +72,7 @@ include_once('loader.php');
 
 <div id="maincontent">
     <div id="titolo">
-    #COLOMBOTRAINING
+    	<img src="IMAGES/COMMON/title.png" height="100%"/>
     </div>
     
 <div id="stepscontainer">
