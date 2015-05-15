@@ -1,0 +1,60 @@
+@charset "utf-8";
+/* CSS Document */
+body
+{
+     font-family: Arial, Helvetica, Sans-serif;
+     font-size:18px;
+}
+
+
+#filtermenu
+{
+    position:relative;
+    top:45px;
+    left:-10;
+	padding:9px;
+	padding-top_50px;
+    width:100%;
+    z-index:20;
+    text-align:center;
+	background-color:rgba(69,140,204,0.5);
+	color:white;
+	min-height:175px;
+	
+   
+}
+
+#maincontent
+{
+    position:relative;
+    top:0px;
+    left:-10;
+	padding:9px;
+	padding-bottom:100px;
+    width:100%;
+    z-index:20;
+    text-align:center;
+	background-color:white;
+	min-height:450px;
+}
+
+#personalinfotable
+{
+   text-align:center;
+   margin-left:auto;
+   margin-right:20px;
+   background-color:rgba(255,255,255,0.5);
+}
+
+
+
+/* controlli risoluzione */
+@media(max-width: 750px)
+{
+   
+}
+
+@media(max-width: 920px)
+{
+   
+}
