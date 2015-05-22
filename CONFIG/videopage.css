@@ -10,16 +10,15 @@ body
 #filtermenu
 {
     position:relative;
-    top:45px;
+    top:35px;
     left:-10;
 	padding:9px;
-	padding-top_50px;
+	padding-bottom:35px;
     width:100%;
     z-index:20;
     text-align:center;
 	background-color:rgba(69,140,204,0.5);
 	color:white;
-	min-height:175px;
 	
    
 }
@@ -46,6 +45,15 @@ body
    background-color:rgba(255,255,255,0.5);
 }
 
+.filters
+{
+   background-color:rgba(255,255,255,0.5);
+   color:black;
+   font-size:30px;
+   border:none;
+   padding:10px;
+   margin:12px;
+}
 
 
 /* controlli risoluzione */
