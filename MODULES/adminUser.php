@@ -1,4 +1,3 @@
-<?php include_once('../CLASSANDFUNC/txtWebSiteJS.php'); ?>
 <div id="newWbTxt">
 <table align="center" width="100%" cellpadding="0">
 <tr>
