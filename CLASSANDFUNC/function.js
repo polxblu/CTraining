@@ -28,5 +28,50 @@ function chgSelTxt(nForm,nMaster,nSlave,num,diff){
     }
 }
 
+function categoryOrd(questo){
+
+	tDiv = document.getElementById('div'+questo);
+	tNew = document.forms['modORD'].elements['new'+questo].selectedIndex;
+	tOld = document.forms['modORD'].elements['old'+questo].value;
+
+	if ( tNew == tOld ) return;
+
+    var su = true;
+	var diff = tNew-tOld;
+    var i = 0; var jj = 0;
+	if (tNew < tOld ){su = false; diff = tOld-tNew;} 
+
+	if (su){
+		for(i=0;i<datiCategory['num'];i++){
+			if  ((tOld < i)&&(i <= tNew)){
+                for(jj=0;jj<datiCategory['num'];jj++){
+				    if (i == document.forms['modORD'].elements['new'+datiCategory[jj]].selectedIndex){
+                        document.forms['modORD'].elements['new'+datiCategory[jj]].selectedIndex--;
+				        document.forms['modORD'].elements['old'+datiCategory[jj]].value--;
+                        document.getElementById('div'+datiCategory[jj]).style.top = (parseInt(document.getElementById('div'+datiCategory[jj]).style.top)-altDiv) + 'px';
+                    }
+                }
+            }
+		}
+        document.forms['modORD'].elements['new'+questo].selectedIndex++;
+        tDiv.style.top = (parseInt(tDiv.style.top)+((diff+1)*altDiv)) + 'px';
+	}else{
+		for(i=(datiCategory['num']-1);i > -1;i--){
+			if  ((tOld > i)&&(i >= tNew)){
+                for(jj=0;jj<datiCategory['num'];jj++){
+				    if (i == document.forms['modORD'].elements['new'+datiCategory[jj]].selectedIndex){
+                        document.forms['modORD'].elements['new'+datiCategory[jj]].selectedIndex++;
+				        document.forms['modORD'].elements['old'+datiCategory[jj]].value++;
+                        document.getElementById('div'+datiCategory[jj]).style.top = (parseInt(document.getElementById('div'+datiCategory[jj]).style.top)+altDiv) + 'px';
+                    }
+                }
+			}
+		}
+        document.forms['modORD'].elements['new'+questo].selectedIndex--;
+        tDiv.style.top = (parseInt(tDiv.style.top)-((diff+1)*altDiv)) + 'px';
+	}
+	document.forms['modORD'].elements['old'+questo].value = tNew;
+}
+
 //-->
 

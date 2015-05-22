@@ -2,7 +2,11 @@
 <?php
    switch ($var['pag']){
 
-	  case 'video':// Testi interni sito
+	  case 'user':// gestione User
+          require('../MODULES/adminUser.php');
+	  break;
+
+	  case 'video':// gestione Video
           require('../MODULES/adminVideo.php');
 	  break;
 
@@ -10,7 +14,11 @@
           require('../MODULES/adminTxtWebSite.php');
 	  break;
 
-	  case 'category':// Testi interni sito
+	  case 'modCategoryOrd':// Gestione Ordine Categorie
+          require('../MODULES/categoryOrd.php');
+	  break;
+
+	  case 'category':// Gestione Categorie
           require('../MODULES/adminCategories.php');
 	  break;
 

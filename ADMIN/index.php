@@ -29,6 +29,7 @@ if($kar['noInt']){
 }
 $txtDB=new Db2Ar($kar['dbhost'.$Wh],$kar['dbuser'],$kar['dbpw'],$kar['dbTXT']);
 $dataDB=new Db2Ar($kar['dbhost'.$Wh],$kar['dbuser'],$kar['dbpw'],$kar['dbDATA']);
+$mainDB=new Db2Ar($kar['dbhost'.$Wh],$kar['dbuser'],$kar['dbpw'],$kar['dbMAIN']);
 
 //SetUp
 engine();
@@ -40,6 +41,7 @@ langMAKER($var['lang'],$var['menu'],$var['pag']);
 if( // Array Liste
   $var['pag']=='category'
 ||$var['pag']=='video'
+||$var['pag']=='modCategoryOrd'
 )listMAKER();
 
 if( // Array Video
@@ -119,6 +121,11 @@ if (isset($_POST['ACT'])){
 //Elimina Categoria
 	  case $testo['buttons']['delCategory']:
           require('../CODES/delCategory.php');
+	  break;
+
+//Modifica ordine sottocategorie
+	  case $testo['buttons']['modCatOrd']:
+          require('../CODES/modCategoryOrd.php');
 	  break;
 
 // Aggiungi Video

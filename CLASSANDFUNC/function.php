@@ -59,13 +59,13 @@ function engine(){
 function listMaker(){
     
     global $testo;
-    global $dataDB;
+    global $mainDB;
     global $liste;
     
-    $dataDB->forceList();
-    $dataDB->setColWh(array('type'));
-    $dataDB->setValWh(array($liste['type']['idc'][0]));
-    $res=$dataDB->select('category');
+    $mainDB->forceList();
+    $mainDB->setColWh(array('type'));
+    $mainDB->setValWh(array($liste['type']['idc'][0]));
+    $res=$mainDB->select('category');
     
     $liste['main']['num']=$res['num'];
     for ($i=0;$i<$res['num'];$i++){
@@ -73,10 +73,11 @@ function listMaker(){
         $liste['main']['name'][$i]=$testo['category'][$res['id'][$i]];
         $liste['main']['who'][$i]=$res['who'][$i];
         
-        $dataDB->forceList();
-        $dataDB->setColWh(array('who'));
-        $dataDB->setValWh(array($res['id'][$i]));
-        $sub=$dataDB->select('category');
+        $mainDB->forceList();
+        $mainDB->setColWh(array('who'));
+        $mainDB->setValWh(array($res['id'][$i]));
+        $mainDB->setColOr(array('ord'));
+        $sub=$mainDB->select('category');
         
         $liste[$res['id'][$i]]['num']=$sub['num'];
         for ($j=0;$j<$sub['num'];$j++){

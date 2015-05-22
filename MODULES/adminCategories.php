@@ -43,8 +43,6 @@
 </table>
 <table align="center" width="600" cellpadding="0">
 <?php
-$dataDB->colOr['title'];
-$array=$dataDB->select('video');
 
 $giro=0;
 for ($i=0;$i<$liste[$liste['type']['idc'][0]]['num'];$i++){
@@ -76,6 +74,26 @@ echo'
             </button>
 		</form>
 </tr>
+';
+$uar['pag']='modCategoryOrd';toUrl();
+echo'
+<tr>
+	<td style="border-right:'.$var['cornColor'].';" align="right" valign="bottom">
+		<form action="index.php?token='.$var['token'].'" name="clrTxT" method="post">
+            <span style="color:'.$var['fontColor'].'">
+            '.$testo['category']['modOrdCategory'].'&nbsp;
+            &nbsp;
+            </span>
+            <input name="id" type="hidden" value="'.$liste[$liste['type']['idc'][0]]['idc'][$i].'"/>
+            <input name="txt" type="hidden" value="'.$liste[$liste['type']['idc'][0]]['name'][$i].'"/>
+            <input name="token" type="hidden" value="'.$_GET['token'].'"/>
+            <button name="ACT" type="submit" value="'.$testo['buttons']['modCatOrd'].'">
+               '.$testo['buttons']['modCatOrd'].'
+            </button>
+		</form>
+</tr>
+';
+echo'
 <tr>
 	<td style="border-right:'.$var['cornColor'].';" align="right" valign="bottom">
 		<form action="index.php?token='.$_GET['token'].'" method="post" name="selCategories'.$i.'" id="selCategories'.$i.'">

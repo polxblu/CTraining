@@ -25,7 +25,7 @@ switch ($_POST['type']){
    break;
 }
 
-if (!isset($_POST['round'])){
+if (isset($_POST['round'])){
     if(!empty($_POST['txt'])){
         
         $txtDB->setColDt(array('txt'));

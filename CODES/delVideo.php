@@ -10,7 +10,7 @@ if (isset($_POST['delSure'])){
     $dataDB->setValWh(array($_POST['id']));
     $dataDB->delete('video');
     
-    if ($_POST['file']!=='noFile')unlink('../'.$kar['flagdir'].$_POST['flago']);
+    if ($_POST['file']!=='noFile')unlink('../'.$kar['videodir'].$_POST['file']);
         
     Redieasy('index.php?token='.$_GET['token']);
 

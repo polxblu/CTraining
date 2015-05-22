@@ -30,9 +30,9 @@ $definitions=array(
                       )
      ,'menu'  => array (  // Elenco menu
                       'admin'  => array (  // Elenco menu admin
-                             'num'  =>  5   //numero di oggetti
-                            ,'idc'  =>  array('home','video','category','webTxt','lingue')     //definizione di oggetti
-                            ,'priv' =>  array('no','si','si','usage','si')      //definizione di oggetti
+                             'num'  =>  6   //numero di oggetti
+                            ,'idc'  =>  array('home','video','category','webTxt','lingue','user')     //definizione di oggetti
+                            ,'priv' =>  array('no','si','si','usage','si','si')      //definizione di oggetti
                             )
                      ,'home'  => array (  // Elenco menu admin
                              'num'  =>  1   //numero di oggetti
