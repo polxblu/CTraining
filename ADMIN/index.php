@@ -98,6 +98,11 @@ if (isset($_POST['ACT'])){
           require('../CODES/chgIMG.php');
 	  break;
 
+//Modifica Password
+	  case $testo['buttons']['chgPASSWD']:
+          require('../CODES/chgPASSWD.php');
+	  break;
+
 //Modifica Testo
 	  case $testo['buttons']['chgTXT']:
           require('../CODES/chgTXT.php');

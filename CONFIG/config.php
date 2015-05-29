@@ -12,11 +12,14 @@ $kar=array(
     ,'noInt'	 =>  false	// Sito in modalità sviluppo senza internete
     ,'flagdir'	 =>  'IMAGES/LANG/'	// Directory Bandierine
     ,'videodir'	 =>  'VIDEO/'	// Directory Bandierine
-    ,'divHight'    => 35     // Altezza Div Ordinamento Categorie
-    ,'imgdir'	 =>  'image/upload/'	// Directory Immagini
-    ,'imgwid'    => 600     // larghezza immagine
-    ,'imghig'    => 600     // altezza immagine
+    ,'divHight'  => 35     // Altezza Div Ordinamento Categorie
 	,'upsize'    => 10485760   // Max file upload size 10M
+	,'time1day'  => 86400      // Giorno(24 * 60 * 60)
+	,'time1week' => 604800     // Settimana(7 * 24 * 60 * 60)
+	,'time1month'=> 2592000    // Mese(30 * 24 * 60 * 60)
+	,'time1year' => 30758400   // Anno(365 * 24 * 60 * 60)
+	,'rangeAgeNum' => 3     // numero range eta
+	,'rangeAge'    => array('0-25','26-45','46-99')    // range eta
  	);
 
 // Definizione Array Variabil
@@ -32,70 +35,22 @@ $var=array(
  	);
 
 // Definizioni Status
-$statz=array(
-     'num'   => 7 
-    ,'tipi'  => array('boss','webber','traduttori','clienti')
+$grants=array(
+     'num'   => 4 
+    ,'type'  => array('boss','webber','traduttori','user')
     ,'boss'  => array(   'all'       =>  true     // tipo accesso completo
                         ,'webTxt'    =>  true     // accesso al testo sito
-                        ,'lingue'    =>  true     // modelli di fatture od oggetti
-                        ,'video'     =>  true     // liste di hotel o fatture o camere etc etc
-                        ,'testi'     =>  true     // prenotazioni
-                        ,'g'     =>  true     // file da fare download.. esempio pdf disoccupazione
-                        ,'site'      =>  true     // aggiunta pezzi di sito, esempio descrizione pdf disoccupazione
-                        ,'langz'     =>  true     // modifica lingue
-                        ,'privez'    =>  true     // modifica privilegi
-                        ,'typz'      =>  true     // modifica typologie es campeggi od hotel
-                        ,'user'      =>  true     // modifica user
-                        ,'webTxt'    =>  true    // modifica testo del sito in fase di costruzione o modifica solo per WEBBER
+                        ,'lingue'    =>  true     // Sistemazione lingue
+                        ,'video'     =>  true     // gestione video
+                        ,'user'      =>  true     // gestioni utenti
+                        ,'category'  =>  true     // sistemazione categorie
                         )
     ,'webber'=> array(   'all'       =>  true     // tipo accesso completo
-                        ,'billingz'  =>  false    // fatture
-                        ,'modelz'    =>  true     // modelli di fatture od oggetti
-                        ,'list'      =>  true     // liste di hotel o fatture o camere etc etc
-                        ,'bookz'     =>  false    // prenotazioni
-                        ,'filez'     =>  true     // file da fare download.. esempio pdf disoccupazione
-                        ,'site'      =>  true     // aggiunta pezzi di sito, esempio descrizione pdf disoccupazione
-                        ,'langz'     =>  true     // modifica lingue
-                        ,'privez'    =>  true     // modifica privilegi
-                        ,'objz'      =>  false    // modifica camere o piazzole o altro
-                        ,'shopz'     =>  true    // modifica strutture
-                        ,'typz'      =>  true     // modifica typologie es campeggi od hotel
-                        ,'user'      =>  true     // modifica user
-                        ,'modLang'   =>  true     // Aggiunge e rimuove lingue
-                        ,'webTxt'    =>  true     // modifica testo del sito in fase di costruzione o modifica solo per WEBBER
-                        ,'ccred'     =>  false)   // visione carta credito cliente
+                        )
     ,'traduttori'=> array( 'all'     =>  false    // tipo accesso parziale
-                        ,'billingz'  =>  false    // fatture
-                        ,'modelz'    =>  false    // modelli di fatture od oggetti
-                        ,'list'      =>  false    // liste di hotel o fatture o camere etc etc
-                        ,'bookz'     =>  false    // prenotazioni
-                        ,'filez'     =>  false    // file da fare download.. esempio pdf disoccupazione
-                        ,'site'      =>  false    // aggiunta pezzi di sito, esempio descrizione pdf disoccupazione
-                        ,'langz'     =>  true     // modifica lingue
-                        ,'privez'    =>  false    // modifica privilegi
-                        ,'objz'      =>  false     // modifica camere o piazzole o altro
-                        ,'shopz'     =>  false    // modifica strutture
-                        ,'typz'      =>  false    // modifica typologie es campeggi od hotel
-                        ,'user'      =>  false    // modifica user
-                        ,'modLang'   =>  false    // Aggiunge e rimuove lingue
-                        ,'webTxt'    =>  false    // modifica testo del sito in fase di costruzione o modifica solo per WEBBER
-                        ,'ccred'     =>  false)   // visione carta credito cliente
-    ,'clienti'=>  array( 'all'       =>  false    // tipo accesso parziale
-                        ,'billingz'  =>  false    // fatture
-                        ,'modelz'    =>  false    // modelli di fatture od oggetti
-                        ,'list'      =>  false    // liste di hotel o fatture o camere etc etc
-                        ,'bookz'     =>  true     // prenotazioni
-                        ,'filez'     =>  false    // file da fare download.. esempio pdf disoccupazione
-                        ,'site'      =>  false    // aggiunta pezzi di sito, esempio descrizione pdf disoccupazione
-                        ,'langz'     =>  false    // modifica lingue
-                        ,'privez'    =>  false    // modifica privilegi
-                        ,'objz'      =>  false    // modifica camere o piazzole o altro
-                        ,'shopz'     =>  false    // modifica strutture
-                        ,'typz'      =>  false    // modifica typologie es campeggi od hotel
-                        ,'user'      =>  false    // modifica user
-                        ,'modLang'   =>  false    // Aggiunge e rimuove lingue
-                        ,'webTxt'    =>  false    // modifica testo del sito in fase di costruzione o modifica solo per WEBBER
-                        ,'ccred'     =>  true )   // visione carta credito cliente
+                        )
+    ,'user'=>  array( 'all'       =>  false    // tipo accesso parziale
+                        )
     );
 
 ?>

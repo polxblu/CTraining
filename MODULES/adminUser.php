@@ -1,135 +1,78 @@
 <div id="newWbTxt">
-<table align="center" width="100%" cellpadding="0">
-<tr>
-	<td width="100%" align="center">
-		<form action="index.php?token=<?php echo $_GET['token'];?>" method="post" name="selSectionsN" id="selSectionsN">
-
-<table align="center">
-<tr>
-	<td align="center" valign="middle"><?php echo $testo['webTxt']['wTxtSections'];?></td></td>
-	<td align="center" valign="middle"><?php echo $testo['webTxt']['wTxtPage'];?></td>
-	<td align="center" valign="middle"><?php echo $testo['webTxt']['textReference'];?></td>
-	<td align="center" valign="middle"><?php echo $testo['common']['commText'];?></td>
-	<td align="center" valign="middle"><?php echo $var['er'];?></td>
-</tr>
-<tr>
-	<td align="center" valign="middle">
-		<select onChange="chgSelTxt('selSections','sections','pages','N','');" name="sectionsN" id="sectionsN" size="1">
-            <option></option>
-            <option value="commonTxt">commonTxt</option>
+<table align="center" width="800" cellpadding="0">
 <?php
-   			for ($j=0;$j<$definitions['pagesTxt']['num'];$j++){
-	   			echo '<option value="'.$definitions['pagesTxt']['idc'][$j].'">'.$definitions['pagesTxt']['idc'][$j].'</option>
-                     ';
-   			}
-?>
-		</select>
-    </td>
-	<td align="center" valign="middle">
-		<select name="pagesN" id="pagesN" size="1">
-            <option></option>
-		</select>
-    </td>
-	<td align="center" valign="middle"><input name="rifTxt" type="text" /></td>
-	<td align="center" valign="middle"><input name="txt" type="text" /></td>
-	<td align="center" valign="middle">
-            <button name="ACT" type="submit" value="<?php echo $testo['buttons']['addWebTxt'];?>">
-               <?php echo $testo['buttons']['addWebTxt'];?>
-            </button>
-    </td>
-</tr>
-</table>
-		</form>
-    </td>
-</tr>
-</table>
-<table align="center" width="600" cellpadding="0">
-<?php
-$txtDB->setColWh(array('languages'));
-$txtDB->setValWh(array($var['lang']));
-$txtDB->setColOr(array('sections','pages','txt'));
-$array=$txtDB->select('txtWeb');
-
-$giro=0;
+$mainDB->setColOr(array('status'));
+$array=$mainDB->select('user');
 for ($i=0;$i<$array['num'];$i++){
-if($giro==10)$giro=0;
-if (is_int($i/2)){
-   $var['cornColor']='2px dashed #FF00FF';
-   $var['fontColor']='#00'.$giro.'FF0';
-}else{
-   $var['cornColor']='2px dashed #FFFF00';
-   $var['fontColor']='#F0'.$giro.'F00';
-}
-$giro++;
-$uar['pag']='chgText';toUrl();
+    $mainDB->forceList();
+    $mainDB->setColWh(array('who','tableF'));
+    $mainDB->setValWh(array($array['id'][$i],'user'));
+    $tmp=$mainDB->select('extraFields');
+    for ($f=0;$f<$DBtable['user']['num'];$f++){
+        for ($d=0;$d<$tmp['num'];$d++){
+            if($DBtable['user']['fields'][$f]==$tmp['name'][$d])
+                $extra[$tmp['name'][$d]]=$tmp['value'][$d];
+        }
+    }
 echo'
 <tr>
-	<td style="border-right:'.$var['cornColor'].';" align="right" valign="bottom">
-		<form action="index.php?token='.$var['token'].'" name="clrTxT" method="post">
-            <span style="color:'.$var['fontColor'].'">
-            '.$array['txt'][$i].'
-            &nbsp;
-            </span>
-            <input name="id" type="hidden" value="'.$array['id'][$i].'"/>
-            <input name="type" type="hidden" value="webTxt"/>
-            <input name="round" type="hidden" value="yes"/>
-            <input name="txt" type="hidden" value="'.$array['txt'][$i].'"/>
-            <input name="token" type="hidden" value="'.$_GET['token'].'"/>
-            <button name="ACT" type="submit" value="'.$testo['buttons']['chgTXT'].'">
-               '.$testo['buttons']['chgTXT'].'
-            </button>
-		</form>
-</tr>
-<tr>
-	<td style="border-right:'.$var['cornColor'].';" align="right" valign="bottom">
-		<form action="index.php?token='.$_GET['token'].'" method="post" name="selSections'.$i.'" id="selSections'.$i.'">
-		   '.$testo['webTxt']['wTxtSections'].'&nbsp;
-		   <select onChange="chgSelTxt(\'selSections\',\'sections\',\'pages\',\''.$i.'\',\'\');" name="sections'.$i.'" id="sections'.$i.'" size="1">
+	<td align="right" valign="bottom">
+	   <form action="index.php?token='.$_GET['token'].'" method="post">
+           '.$testo['common']['commUName'].'&nbsp;
+           <input name="nik" type="text" value="'.$array['nik'][$i].'"/>&nbsp;
+		   '.$testo['user']['admUserStatus'].'&nbsp;
+		   <select name="status" id="status" size="1">
               <option></option>
-   			  <option value="commonTxt" ';if ($array['sections'][$i]=='commonTxt')echo' selected '; echo '>commonTxt</option>
               ';
-   			  for ($j=0;$j<$definitions['pagesTxt']['num'];$j++){
-	   			 echo '<option value="'.$definitions['pagesTxt']['idc'][$j].'"';
-                 if ($array['sections'][$i]==$definitions['pagesTxt']['idc'][$j])echo' selected'; 
-                 echo '>'.$definitions['pagesTxt']['idc'][$j].'</option>
+   			  for ($j=0;$j<$grants['num'];$j++){
+	   			 echo '<option value="'.$grants['type'][$j].'"';
+                 if ($array['status'][$i]==$grants['type'][$j])echo' selected'; 
+                 echo '>'.$grants['type'][$j].'</option>
               ';
               }
    			  echo '
-		   </select>
-		   &nbsp;'.$testo['webTxt']['wTxtPage'].'&nbsp;
-		   <select name="pages'.$i.'" id="pages'.$i.'" size="1">
+		   </select>&nbsp;
+		   '.$testo['user']['admUserAge'].'&nbsp;
+		   <select name="age" id="age" size="1">
               <option></option>
               ';
-   			  if($array['sections'][$i]=='commonTxt'){
-                for ($j=0;$j<$definitions['commonTxt']['num'];$j++){
-	   			  echo '<option value="'.$definitions['commonTxt']['idc'][$j].'"';
-                  if ($array['pages'][$i]==$definitions['commonTxt']['idc'][$j])echo' selected';
-                  echo '>'.$definitions['commonTxt']['idc'][$j].'</option>
+              for ($j=0;$j<$kar['rangeAgeNum'];$j++){
+			     echo '<option value="'.$j.'"';
+                 if ($extra['age']==$j)echo' selected';
+                 echo '>'.$kar['rangeAge'][$j].'</option>
               ';
-		        }
-   			  }else{
-                for ($j=0;$j<$definitions['menu'][$array['sections'][$i]]['num'];$j++){
-	   			  echo '<option value="'.$definitions['menu'][$array['sections'][$i]]['idc'][$j].'"';
-                  if ($array['pages'][$i]==$definitions['menu'][$array['sections'][$i]]['idc'][$j])echo' selected';
-                  echo '>'.$definitions['menu'][$array['sections'][$i]]['idc'][$j].'</option>
-              ';
-   			      }
               }
               echo '
-		   </select>
-		   &nbsp;'.$testo['webTxt']['textReference'].'&nbsp;
-           <input name="rifTxt" type="text" value="'.$array['rifTxt'][$i].'"/>
+		   </select><br/>
+           '.$testo['common']['commName'].'&nbsp;
+           <input name="name" type="text" value="'.$extra['name'].'"/>&nbsp;
+           '.$testo['common']['commSurName'].'&nbsp;
+           <input name="surname" type="text" value="'.$extra['surname'].'"/>&nbsp;
+           '.$testo['common']['commEmail'].'&nbsp;
+           <input placeholder="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" type="email" name="email" required value="'.$array['email'][$i].'"/><br/>
            <input name="rifTxtOld" type="hidden" value="'.$array['rifTxt'][$i].'"/>
            <input name="id" type="hidden" value="'.$array['id'][$i].'"/>
            <input name="cont" type="hidden" value="'.$i.'"/>
-           <button name="ACT" type="submit" value="'.$testo['buttons']['modRifWebTxt'].'">
-               '.$testo['buttons']['modRifWebTxt'].'
+           <button name="ACT" type="submit" value="'.$testo['buttons']['setProfile'].'">
+               '.$testo['buttons']['setProfile'].'
            </button>
+	   </form>
+    </td>
+    <td>
+		<form action="index.php?token='.$_GET['token'].'" name="clrTxT" method="post">
+            <input name="passwd1" id="passwd1" type="password" value="" required/><br/>
+            <input name="passwd2" id="passwd2" type="password" value="" required/><br/>
+            </span>
+            <input name="id" type="hidden" value="'.$array['id'][$i].'"/>
+            <input name="type" type="hidden" value="admin"/>
+            <button name="ACT" type="submit" value="'.$testo['buttons']['chgPASSWD'].'">
+               '.$testo['buttons']['chgPASSWD'].'
+            </button>
 		</form>
     </td>
 </tr>
 <tr>
-	<td style="';if($i!==$array['num']-1)echo'border-bottom:'.$var['cornColor'].';';echo'border-right:'.$var['cornColor'].';" align="right" valign="bottom">
+	<td colspan="2" align="right" valign="bottom">
 		<form action="index.php?token='.$_GET['token'].'" name="clrTxT" method="post">
             '.$testo['common']['deleteSure'].'
             &nbsp;
@@ -138,8 +81,8 @@ echo'
             <input name="id" type="hidden" value="'.$array['id'][$i].'"/>
             <input name="rifTxtOld" type="hidden" value="'.$array['rifTxt'][$i].'"/>
             <input name="rifTxt" type="hidden" value="'.$array['rifTxt'][$i].'"/>
-            <button name="ACT" type="submit" value="'.$testo['buttons']['delTxtWeb'].'">
-               '.$testo['buttons']['delTxtWeb'].'
+            <button name="ACT" type="submit" value="'.$testo['buttons']['delUser'].'">
+               '.$testo['buttons']['delUser'].'
             </button>
 		</form>
     </td>

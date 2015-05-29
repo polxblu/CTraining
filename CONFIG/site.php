@@ -45,23 +45,9 @@ $definitions=array(
 // DEFINIZIONI UTILIZZO TABLE
 $DBtable=array(
      'user'   => array (  // Tabella User
-           'name'     =>  true   
-          ,'surname'  =>  true
-          ,'zip'      =>  true
-          ,'city'     =>  true
-          ,'state'    =>  true
-          ,'preflang' =>  true
-          ,'addres'   =>  true
-          ,'opt0'     =>  true
-          ,'opt1'     =>  true
-          ,'opt2'     =>  true
-          ,'opt3'     =>  true
-          ,'opt4'     =>  true
-          ,'opt5'     =>  true
-          ,'opt6'     =>  true
-          ,'opt7'     =>  true
-          ,'opt8'     =>  true
-          ,'opt9'     =>  true
+           'num'   =>  4    
+          ,'fields'=> array('name','surname','age','remTime')
+          ,'modFields'=> array(true,true,true,false)
           )  
      ,'languages' => array (  // Tabella lingue
            'flag'     =>  true   
