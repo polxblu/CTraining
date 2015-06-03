@@ -148,6 +148,21 @@ if (isset($_POST['ACT'])){
           require('../CODES/delVideo.php');
 	  break;
 
+//Aggiungi Rimuovi Tempo LogIn
+	  case $testo['buttons']['addRemTime']:
+          require('../CODES/addRemTime.php');
+	  break;
+
+//modifica User
+	  case $testo['buttons']['setProfile']:
+          require('../CODES/modUser.php');
+	  break;
+
+//elimina User
+	  case $testo['buttons']['delUser']:
+          require('../CODES/delUser.php');
+	  break;
+
 
 
 

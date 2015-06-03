@@ -38,6 +38,10 @@
           require('../COMMON/chgFile.php');
 	  break;
 
+	  case 'setGrants':// Pagina Setup Privilegi Utenti
+          require('../MODULES/setGrants.php');
+	  break;
+
 	  default://LogOut  DEVE ASSOLUTAMENTE ESSERE il ULTIMO
           
           echo '<br/>'.$testo['home']['intro'].'<br/><br/>';

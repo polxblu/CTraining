@@ -1,6 +1,7 @@
 <div id="newWbTxt">
 <table align="center" width="800" cellpadding="0">
 <?php
+echo $var['er'].'<br/>';
 $mainDB->setColOr(array('status'));
 $array=$mainDB->select('user');
 for ($i=0;$i<$array['num'];$i++){
@@ -14,6 +15,7 @@ for ($i=0;$i<$array['num'];$i++){
                 $extra[$tmp['name'][$d]]=$tmp['value'][$d];
         }
     }
+    if($array['status'][$i]!=='boss'){
 echo'
 <tr>
 	<td align="right" valign="bottom">
@@ -24,7 +26,7 @@ echo'
 		   <select name="status" id="status" size="1">
               <option></option>
               ';
-   			  for ($j=0;$j<$grants['num'];$j++){
+   			  for ($j=1;$j<$grants['num'];$j++){
 	   			 echo '<option value="'.$grants['type'][$j].'"';
                  if ($array['status'][$i]==$grants['type'][$j])echo' selected'; 
                  echo '>'.$grants['type'][$j].'</option>
@@ -50,9 +52,8 @@ echo'
            <input name="surname" type="text" value="'.$extra['surname'].'"/>&nbsp;
            '.$testo['common']['commEmail'].'&nbsp;
            <input placeholder="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" type="email" name="email" required value="'.$array['email'][$i].'"/><br/>
-           <input name="rifTxtOld" type="hidden" value="'.$array['rifTxt'][$i].'"/>
+           
            <input name="id" type="hidden" value="'.$array['id'][$i].'"/>
-           <input name="cont" type="hidden" value="'.$i.'"/>
            <button name="ACT" type="submit" value="'.$testo['buttons']['setProfile'].'">
                '.$testo['buttons']['setProfile'].'
            </button>
@@ -74,6 +75,37 @@ echo'
 <tr>
 	<td colspan="2" align="right" valign="bottom">
 		<form action="index.php?token='.$_GET['token'].'" name="clrTxT" method="post">
+            '.$testo['user']['useExpDate'].'&nbsp;'.date('d-m-Y', $extra['remTime']).'
+            &nbsp;'.$testo['common']['commAdd'].'&nbsp;
+            <input type="radio" value="add" name="addrem" />
+            <input type="radio" value="rem" name="addrem" />
+            &nbsp;'.$testo['common']['commRemove'].'&nbsp;
+		    <select name="addTime" id="status" size="1">
+              <option></option>
+              ';
+   			  for ($j=0;$j<$kar['addTimeNum'];$j++){
+	   			 echo '<option value="'.$kar['addTime'][$j].'">'.$kar['addTime'][$j]/$kar['addTime'][0].'</option>
+              ';
+              }
+   			  echo '
+		    </select>&nbsp;
+            '.$testo['common']['commDays'].'
+            <input name="id" type="hidden" value="'.$array['id'][$i].'"/>
+            <input name="remTime" type="hidden" value="'.$extra['remTime'].'"/>
+            <button name="ACT" type="submit" value="'.$testo['buttons']['addRemTime'].'">
+               '.$testo['buttons']['addRemTime'].'
+            </button>
+		</form>
+        ';
+        $uar['pag']='setGrants';toUrl();
+        echo'
+   		<form action="index.php?token='.$var['token'].'" name="clrTxT" method="post">
+            <input name="id" type="hidden" value="'.$array['id'][$i].'"/>
+            <button name="ACT" type="submit" value="'.$testo['buttons']['setGrants'].'">
+               '.$testo['buttons']['setGrants'].'
+            </button>
+		</form>
+		<form action="index.php?token='.$_GET['token'].'" name="clrTxT" method="post">
             '.$testo['common']['deleteSure'].'
             &nbsp;
             <input type="checkbox" value="delSure" id="delSure" name="delSure" />
@@ -88,6 +120,7 @@ echo'
     </td>
 </tr>
 ';
+    }
 }
 ?>
 </table>
