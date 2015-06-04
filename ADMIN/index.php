@@ -163,6 +163,11 @@ if (isset($_POST['ACT'])){
           require('../CODES/delUser.php');
 	  break;
 
+//Modifica privilegi utente
+	  case $testo['buttons']['setGrants']:
+          require('../CODES/7Grants.php');
+	  break;
+
 
 
 

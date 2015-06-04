@@ -32,7 +32,7 @@ $definitions=array(
                       'admin'  => array (  // Elenco menu admin
                              'num'  =>  6   //numero di oggetti
                             ,'idc'  =>  array('home','video','category','webTxt','lingue','user')     //definizione di oggetti
-                            ,'priv' =>  array('no','si','si','usage','si','si')      //definizione di oggetti
+                            ,'priv' =>  array(false,true,true,true,true,true)      //definizione di oggetti
                             )
                      ,'home'  => array (  // Elenco menu admin
                              'num'  =>  1   //numero di oggetti

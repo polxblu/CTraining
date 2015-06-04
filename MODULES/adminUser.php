@@ -101,6 +101,7 @@ echo'
         echo'
    		<form action="index.php?token='.$var['token'].'" name="clrTxT" method="post">
             <input name="id" type="hidden" value="'.$array['id'][$i].'"/>
+            <input name="token" type="hidden" value="'.$_GET['token'].'"/>
             <button name="ACT" type="submit" value="'.$testo['buttons']['setGrants'].'">
                '.$testo['buttons']['setGrants'].'
             </button>
