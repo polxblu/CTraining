@@ -53,11 +53,6 @@ if( // Array Video
 if (isset($_POST['ACT'])){
    switch ($_POST['ACT']){
 
-//LogIn DEVE ASSOLUTAMENTE ESSERE il PRIMO
-	  case $testo['buttons']['LogIn']:
-          require('../CODES/LogIn.php');
-	  break;
-
 //Aggiunge Lingua solo x webber
 	  case $testo['buttons']['addLanguages']:
           require('../CODES/addLanguages.php');
@@ -186,6 +181,7 @@ include_once('loader.php');
 //close DB
 unset($txtDB);
 unset($dataDB);
+unset($mainDB);
 
 // zona dedicata al debug
 if ($kar['debug']) include_once '../CLASSANDFUNC/debug.php';

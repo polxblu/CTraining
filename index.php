@@ -35,10 +35,36 @@ engine();
 langMAKER($var['lang'],$var['menu'],$var['pag']);
 
 
+//Inizio codice Sito
+
+if (isset($_POST['ACT'])){
+   switch ($_POST['ACT']){
+
+//LogIn DEVE ASSOLUTAMENTE ESSERE il PRIMO
+	  case $testo['buttons']['LogIn']:
+          $utente=new User();
+          if()
+	  break;
+
+
+
+//LogOut  DEVE ASSOLUTAMENTE ESSERE il ULTIMO
+	  default:
+          //sllog();
+	  break;
+
+   }
+}
+
 //draw
 include_once('loader.php');
 
+//close DB
+unset($txtDB);
+unset($dataDB);
+unset($mainDB);
 
-
-
+// zona dedicata al debug
+if ($kar['debug']) include_once '../CLASSANDFUNC/debug.php';
+// zona dedicat al debug */
 ?>

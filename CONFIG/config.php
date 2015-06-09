@@ -23,8 +23,8 @@ $kar=array(
 // Definizione Array Variabil
 
 $var=array(
-     'pag'    => 'home'  // variabile di sezione Sezione Sito
-    ,'menu'   => 'home'  // variabile di errore
+     'pag'    => 'home'  // variabile di pagina
+    ,'menu'   => 'home'  // variabile di menu
     ,'er'     => '&nbsp;'  // variabile di errore
     ,'idx'    => array (  // variabile di randomizzazione per l'index
                        'gon'    =>  true   //Variabile primo giro

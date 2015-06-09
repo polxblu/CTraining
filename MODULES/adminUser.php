@@ -112,8 +112,6 @@ echo'
             <input type="checkbox" value="delSure" id="delSure" name="delSure" />
             &nbsp;
             <input name="id" type="hidden" value="'.$array['id'][$i].'"/>
-            <input name="rifTxtOld" type="hidden" value="'.$array['rifTxt'][$i].'"/>
-            <input name="rifTxt" type="hidden" value="'.$array['rifTxt'][$i].'"/>
             <button name="ACT" type="submit" value="'.$testo['buttons']['delUser'].'">
                '.$testo['buttons']['delUser'].'
             </button>

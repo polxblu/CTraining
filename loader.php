@@ -19,10 +19,7 @@
    <li><a href='#'>Ricette</a></li>
    <li><a href='#'>Chi sono</a></li>
    <li><a href='#'>Contatti/Assistenza</a></li>
-   <li class='has-sub'><a href='#'>Login</a>
-   <?php include_once 'COMMON/logIn.php'; ?>
-   </lb>
-
+   <?php if(!isset($_SESSION['id'])) include_once 'COMMON/logIn.php'; ?>
 </ul>
 </div>
 
