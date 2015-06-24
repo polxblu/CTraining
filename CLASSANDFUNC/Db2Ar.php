@@ -93,7 +93,7 @@ class Db2Ar{
                 $ope = '=';
             }
             $this->query .= ($typ.$value.$ope."'".$this->valWh[$key]."'");
-            if (isset($this->typWh[$key + 1])) {
+            if (isset($this->typWh[$key])) {
                 $typ = ' ' . $this->typWh[$key] . ' ';
             } else {
                 $typ = ' AND ';

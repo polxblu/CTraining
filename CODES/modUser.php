@@ -5,6 +5,8 @@ if(
     ||empty($_POST['email'])
 ){
     $var['er']=$testo['errors']['emptyField'];    
+}elseif($_POST['email']!==$_POST['email2']){
+    $var['er']=$testo['errors']['mailMissMatch'];    
 }else{
     for($i=0;$i<$DBtable['user']['num'];$i++){
         if($DBtable['user']['modFields'][$i]){

@@ -1,5 +1,5 @@
 <?php
-$uar=array(); //inizzializzazione array x URL
+$uar=array(); //inizzializzazione array x URL 
 $testo=array(); //inizzializzazione array x TESTO
 $video=array(); //inizzializzazione array x VIDEO
 

@@ -32,10 +32,9 @@ function engine(){
         $var['dToken'] = pack("H*",$_GET['token']);
         $process=explode('#',$var['dToken']);
         for ($i=0;$i<count($process);$i=$i+2){
-            $uar[$process[$i]]=$process[$i+1];    
+            $var[$process[$i]]=$process[$i+1];    
         }
-        $var['pag']=$uar['pag'];
-        $var['lang']=$uar['lang'];
+        if(!isset($var['lang'])){$var['lang']=$testo['defaultL'];}
     }else{
         if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
             $var['ip'] = $_SERVER['HTTP_CLIENT_IP'];
@@ -50,8 +49,8 @@ function engine(){
         $txtDB->setValWh(array($cCode));
         $res=$txtDB->select('languages');
             
-        if(empty($res['id'])){$var['lang']=$uar['lang']=$testo['defaultL'];}
-        else {$var['lang']=$uar['lang']=$res['id'];}
+        if(empty($res['id'])){$var['lang']=$testo['defaultL'];}
+        else {$var['lang']=$res['id'];}
             
     }
 }
@@ -106,7 +105,6 @@ function toUrl(){
     
     global $uar;
     global $var;
-    global $kar;
     
     $var['token']='';
     foreach ($uar as $key => $value){

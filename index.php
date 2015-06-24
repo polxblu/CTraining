@@ -34,18 +34,36 @@ engine();
 //Creazione array Testo
 langMAKER($var['lang'],$var['menu'],$var['pag']);
 
-
 //Inizio codice Sito
-
 if (isset($_POST['ACT'])){
    switch ($_POST['ACT']){
 
 //LogIn DEVE ASSOLUTAMENTE ESSERE il PRIMO
-	  case $testo['buttons']['LogIn']:
-          $utente=new User();
-          if()
+	  case $testo['buttons']['logIn']:
+          require ('CODES/logInCode.php');    
 	  break;
 
+
+
+//Modifica Immagine
+	  case $testo['buttons']['chgIMG']:
+          require('CODES/chgIMG.php');
+	  break;
+
+//Modifica Password
+	  case $testo['buttons']['chgPASSWD']:
+          require('CODES/chgPASSWD.php');
+	  break;
+
+//Modifica Testo
+	  case $testo['buttons']['chgTXT']:
+          require('CODES/chgTXT.php');
+	  break;
+
+//Modifica File
+	  case $testo['buttons']['chgFILE']:
+          require('CODES/chgFILE.php');
+	  break;
 
 
 //LogOut  DEVE ASSOLUTAMENTE ESSERE il ULTIMO
@@ -65,6 +83,7 @@ unset($dataDB);
 unset($mainDB);
 
 // zona dedicata al debug
-if ($kar['debug']) include_once '../CLASSANDFUNC/debug.php';
-// zona dedicat al debug */
+if ($kar['debug']) include_once 'CLASSANDFUNC/debug.php';
+// zona dedicat al debug 
+
 ?>
