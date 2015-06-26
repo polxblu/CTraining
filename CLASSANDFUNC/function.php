@@ -32,7 +32,7 @@ function engine(){
         $var['dToken'] = pack("H*",$_GET['token']);
         $process=explode('#',$var['dToken']);
         for ($i=0;$i<count($process);$i=$i+2){
-            $var[$process[$i]]=$process[$i+1];    
+            $uar[$process[$i]]=$var[$process[$i]]=$process[$i+1];    
         }
         if(!isset($var['lang'])){$var['lang']=$testo['defaultL'];}
     }else{

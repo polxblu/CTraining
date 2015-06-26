@@ -21,8 +21,8 @@ $liste=array( //inizzializzazione array dele Liste e categorie
 // Definizione Array Costruzione Sito
 $definitions=array(
       'commonTxt'  => array (  // Tipi di Testo
-                       'num'    =>  6   //numero di oggetti
-                      ,'idc'  =>  array('menu','errors','buttons','login','common','category')      //definizione di oggetti
+                       'num'    =>  7   //numero di oggetti
+                      ,'idc'  =>  array('menu','errors','buttons','login','common','category','messages')      //definizione di oggetti
                       )
      ,'pagesTxt'  => array (  // Tipi di Testo
                        'num'    =>  2   //numero di oggetti

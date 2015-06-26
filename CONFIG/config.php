@@ -18,6 +18,7 @@ $kar=array(
     ,'addTime'     => array(86400,2592000,31536000)      // Giorno(24 * 60 * 60)Settimana(7 * 24 * 60 * 60)Mese(30 * 24 * 60 * 60)Anno(365 * 24 * 60 * 60)
 	,'rangeAgeNum' => 3     // numero range eta
 	,'rangeAge'    => array('0-25','26-45','46-99')    // range eta
+	,'redTime' => 5     // Time for redirect in second
  	);
 
 // Definizione Array Variabil

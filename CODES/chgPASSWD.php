@@ -18,8 +18,8 @@ else{
         }else{
             $mainDB->setValWh(array($_SESSION['id']));
             $mainDB->update('user');
-            echo 'alert("'.$testo['errors']['passwdMiss'].'");';
-            Redieasy('CODES/logOut.php?token='.$_GET['token']);
+            $uar['lang']=$var['lang'];$uar['message']='passChange';toUrl();
+            Redieasy('PAGES/redAlert.php?token='.$var['token']);
         }
          
     }

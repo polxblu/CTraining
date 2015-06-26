@@ -45,6 +45,12 @@ if (isset($_POST['ACT'])){
 
 
 
+
+//Modifica profilo
+	  case $testo['buttons']['setProfile']:
+          require('CODES/7Profile.php');
+	  break;
+
 //Modifica Immagine
 	  case $testo['buttons']['chgIMG']:
           require('CODES/chgIMG.php');

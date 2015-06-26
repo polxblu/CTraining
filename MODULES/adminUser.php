@@ -52,7 +52,6 @@ echo'
            <input name="surname" type="text" value="'.$extra['surname'].'"/><br/>
            '.$testo['common']['commEmail'].'&nbsp;
            <input placeholder="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" type="email" name="email" required value="'.$array['email'][$i].'"/>&nbsp;
-           <input placeholder="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" type="email" name="email2" required value="'.$array['email'][$i].'"/>&nbsp;
            <input name="id" type="hidden" value="'.$array['id'][$i].'"/>
            <button name="ACT" type="submit" value="'.$testo['buttons']['setProfile'].'">
                '.$testo['buttons']['setProfile'].'
