@@ -30,8 +30,15 @@ if (empty($check['id'])){
             $_SESSION[$data['name'][$i]]=$data['value'][$i];
         }
     }
-    $uar['lang']=$check['prefLang'];
-    toUrl();
-    Redieasy('index.php?token='.$var['token']);
+    
+    if($_SESSION['checked']=='yes'){
+        $uar['lang']=$check['prefLang'];
+        toUrl();
+        Redieasy('index.php?token='.$var['token']);
+    }else{
+        $uar['lang']=$var['lang'];$uar['message']='sendMail';toUrl();
+        Redieasy('PAGES/sendMail.php?token='.$var['token']);
+    }
+    
 } 
 ?>

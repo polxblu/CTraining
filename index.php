@@ -38,7 +38,7 @@ langMAKER($var['lang'],$var['menu'],$var['pag']);
 listMAKER();
 
  // Array Video
-videoMAKER($var['lang']);
+//videoMAKER($var['lang']);
 
 
 //Inizio codice Sito

@@ -45,7 +45,6 @@
            <input placeholder="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" type="email" name="email" required value="<?php echo $_SESSION['email']; ?>"/><br/>
            <?php echo $testo['common']['commEmailRet']; ?>&nbsp;
            <input placeholder="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" type="email" name="email2" required value="<?php echo $_SESSION['email']; ?>"/><br/>
-           <input name="id" type="hidden" value="<?php echo $_SESSION['id']; ?>"/>
            <button name="ACT" type="submit" value="<?php echo $testo['buttons']['setProfile']; ?>">
                <?php echo $testo['buttons']['setProfile']; ?>
            </button>
