@@ -1,17 +1,21 @@
-<div id="newWbTxt">
+<?php
+echo '<div id="newWbTxt">';
+
+if ($grants[$_SESSION['status']]['video']){
+echo '
 <table align="center" width="100%" cellpadding="0">
 <tr>
 	<td width="100%" align="center">
-		<form action="index.php?token=<?php echo $_GET['token'];?>" method="post">
+		<form action="index.php?token='.$_GET['token'].'" method="post">
 
 <table align="center">
 <tr>
-	<td align="center" valign="middle"><?php echo $testo['common']['commName'];?></td></td>
-	<td align="center" valign="middle"><?php echo $testo['video']['admMuscGroup'];?></td>
-	<td align="center" valign="middle"><?php echo $testo['video']['amdDifficul'];?></td>
-	<td align="center" valign="middle"><?php echo $testo['video']['admCategoryV'];?></td>
-	<td align="center" valign="middle"><?php echo $testo['video']['admFreeVid'];?></td>
-	<td align="center" valign="middle"><?php echo $var['er'];?></td>
+	<td align="center" valign="middle">'.$testo['common']['commName'].'</td></td>
+	<td align="center" valign="middle">'.$testo['video']['admMuscGroup'].'</td>
+	<td align="center" valign="middle">'.$testo['video']['amdDifficul'].'</td>
+	<td align="center" valign="middle">'.$testo['video']['admCategoryV'].'</td>
+	<td align="center" valign="middle">'.$testo['video']['admFreeVid'].'</td>
+	<td align="center" valign="middle">'.$var['er'].'</td>
 </tr>
 <tr>
 	<td align="center" valign="middle"><input name="name" type="text" /></td>
@@ -19,43 +23,43 @@
 	<td align="center" valign="middle">
 		<select name="muscleGroupN" id="muscleGroupN" size="1">
             <option></option>
-<?php
+';
    			for ($j=0;$j<$liste['videoMuscleGroup']['num'];$j++){
 	   			echo '<option value="'.$liste['videoMuscleGroup']['idc'][$j].'">'.$liste['videoMuscleGroup']['name'][$j].'</option>
                      ';
    			}
-?>
+echo'
 		</select>
     </td>
 
 	<td align="center" valign="middle">
 		<select name="difficultN" id="difficultN" size="1">
             <option></option>
-<?php
+';
    			for ($j=0;$j<$liste['videoDifficult']['num'];$j++){
 	   			echo '<option value="'.$liste['videoDifficult']['idc'][$j].'">'.$liste['videoDifficult']['name'][$j].'</option>
                      ';
    			}
-?>
+echo'
 		</select>
     </td>
 	<td align="center" valign="middle">
 		<select name="categoryN" id="categoryN" size="1">
             <option></option>
-<?php
+';
    			for ($j=0;$j<$liste['videoCategory']['num'];$j++){
 	   			echo '<option value="'.$liste['videoCategory']['idc'][$j].'">'.$liste['videoCategory']['name'][$j].'</option>
                      ';
    			}
-?>
+echo'
 		</select>
     </td>
 	<td align="center" valign="middle">
         <input type="checkbox" value="yes" name="freeN" id="freeN" />
     </td>
 	<td align="center" valign="middle">
-            <button name="ACT" type="submit" value="<?php echo $testo['buttons']['addVideo'];?>">
-               <?php echo $testo['buttons']['addVideo'];?>
+            <button name="ACT" type="submit" value="'.$testo['buttons']['addVideo'].'">
+               '.$testo['buttons']['addVideo'].'
             </button>
     </td>
 </tr>
@@ -64,8 +68,9 @@
     </td>
 </tr>
 </table>
-<table align="center" width="600" cellpadding="0">
-<?php
+';
+}
+echo' <table align="center" width="600" cellpadding="0">';
 
 $giro=0;
 for ($i=0;$i<$video['num'];$i++){
@@ -78,6 +83,8 @@ if (is_int($i/2)){
    $var['fontColor']='#F0'.$giro.'F00';
 }
 $giro++;
+if (  ($grants[$_SESSION['status']]['testo'] && $_SESSION[$var['lang']]=='yes')
+    ||$grants[$_SESSION['status']]['video']){
 $uar['pag']='chgText';toUrl();
 echo'
 <tr>
@@ -98,6 +105,9 @@ echo'
 		</form>
 </tr>
 ';
+
+
+if ($grants[$_SESSION['status']]['video']){
 $uar['pag']='chgFile';toUrl();
 echo'
 <tr>
@@ -184,6 +194,6 @@ echo'
 </tr>
 ';
 }
+}
+echo '</table></div>';
 ?>
-</table>
-</div>

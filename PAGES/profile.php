@@ -27,6 +27,18 @@
               }
               ?>
 		   </select><br/>
+		   <?php echo $testo['common']['userTypeTraining']; ?>&nbsp;
+           <select name="typeTraining" id="typeTraining" size="1">
+              <option></option>
+              <?php
+              for ($j=0;$j<$liste['typeTraining']['num'];$j++){
+			     echo '<option value="'.$liste['typeTraining']['idc'][$j].'"';
+                 if ($_SESSION['typeTraining']==$liste['typeTraining']['idc'][$j])echo' selected';
+                 echo '>'.$liste['typeTraining']['name'][$j].'</option>
+              ';
+              }
+              ?>
+		   </select><br/>
            <?php echo $testo['common']['commUName']; ?>&nbsp;
            <input name="nik" type="text" value="<?php echo $_SESSION['nik']; ?>"/><br />
            <?php echo $testo['common']['commEmail']; ?>&nbsp;

@@ -14,7 +14,7 @@
 
 <div id='cssmenu' class="align-center">
 <ul>
-   <li class="active"><a href='#'>Home</a></li>
+   <li class="active"><a href='index.php?token=<?php $uar['pag']='home';toUrl();echo $var['token'];?>'>Home</a></li>
    <li><a href='#'>Video</a></li>
    <li><a href='#'>WorkOut</a></li>
    <li><a href='#'>Ricette</a></li>

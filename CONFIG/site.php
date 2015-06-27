@@ -9,11 +9,12 @@ $liste=array( //inizzializzazione array dele Liste e categorie
                       ,'idc'  =>  array('main','slave')      //definizione di oggetti
                       )
      ,'property'  => array (  // propieta liste Tabelle
-                       'num'    =>  3   //numero di oggetti
+                       'num'    =>  4   //numero di oggetti
                       ,'idc'  =>  array(
                             'videoCategory'      //Workout, panca,etc    
                            ,'videoMuscleGroup'   // gruppo muscolare
                            ,'videoDifficult'     // Difficolta    
+                           ,'typeTraining'       // Tipi di allenamento    
                            )         //definizione di oggetti
                       )
      );   
@@ -32,7 +33,7 @@ $definitions=array(
                       'admin'  => array (  // Elenco menu admin
                              'num'  =>  6   //numero di oggetti
                             ,'idc'  =>  array('home','video','category','webTxt','lingue','user')     //definizione di oggetti
-                            ,'priv' =>  array(false,true,true,true,true,true)      //definizione di oggetti
+                            ,'priv' =>  array(false,false,false,false,true,true)      //definizione di oggetti
                             )
                      ,'home'  => array (  // Elenco menu admin
                              'num'  =>  1   //numero di oggetti
@@ -46,8 +47,8 @@ $definitions=array(
 $DBtable=array(
      'user'   => array (  // Tabella User
            'num'   =>  4    
-          ,'fields'=> array('name','surname','age','remTime')
-          ,'modFields'=> array(true,true,true,false)
+          ,'fields'=> array('name','surname','age','typeTraining','remTime')
+          ,'modFields'=> array(true,true,true,true,false)
           )  
      ,'languages' => array (  // Tabella lingue
            'flag'     =>  true   
