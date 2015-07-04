@@ -18,6 +18,9 @@ $kar=array(
     ,'addTime'     => array(86400,2592000,31536000)      // Giorno(24 * 60 * 60)Settimana(7 * 24 * 60 * 60)Mese(30 * 24 * 60 * 60)Anno(365 * 24 * 60 * 60)
 	,'rangeAgeNum' => 3     // numero range eta
 	,'rangeAge'    => array('0-25','26-45','46-99')    // range eta
+	,'redTime' => 5     // Time for redirect in second
+	,'redTimeLink' => 20     // Time for redirect in second for messages
+	,'mailConfirm' => 'noreply@colombotraining.it'     // Time for redirect in second for messages
  	);
 
 // Definizione Array Variabil
@@ -36,32 +39,28 @@ $var=array(
 $grants=array(
      'num'   => 4 
     ,'type'  => array('boss','webber','traduttori','user')
-    ,'boss'  => array(   'all'       =>  true     // tipo accesso completo
-                        ,'webTxt'    =>  false    // accesso al testo sito
+    ,'boss'  => array(   'webTxt'    =>  true    // accesso al testo sito
                         ,'testo'     =>  true     // Traduzione testi
                         ,'lingue'    =>  true     // Sistemazione lingue
                         ,'video'     =>  true     // gestione video
                         ,'user'      =>  true     // gestioni utenti
                         ,'category'  =>  true     // sistemazione categorie
                         )
-    ,'webber'=> array(   'all'       =>  false    // tipo accesso completo
-                        ,'webTxt'    =>  true     // accesso al testo sito
+    ,'webber'=> array(   'webTxt'    =>  true     // accesso al testo sito
                         ,'testo'     =>  true     // Traduzione testi
                         ,'lingue'    =>  true     // Sistemazione lingue
-                        ,'video'     =>  false    // gestione video
+                        ,'video'     =>  true    // gestione video
                         ,'user'      =>  false    // gestioni utenti
-                        ,'category'  =>  false    // sistemazione categorie
+                        ,'category'  =>  true    // sistemazione categorie
                         )
-    ,'traduttori'=> array( 'all'     =>  false    // tipo accesso parziale
-                        ,'webTxt'    =>  false    // accesso al testo sito
+    ,'traduttori'=> array( 'webTxt'    =>  false    // accesso al testo sito
                         ,'testo'     =>  true     // Traduzione testi
                         ,'lingue'    =>  false    // Sistemazione lingue
                         ,'video'     =>  false    // gestione video
                         ,'user'      =>  false    // gestioni utenti
                         ,'category'  =>  false    // sistemazione categorie
                         )
-    ,'user'=>  array( 'all'          =>  false    // tipo accesso parziale
-                        ,'webTxt'    =>  false    // accesso al testo sito
+    ,'user'=>  array(    'webTxt'    =>  false    // accesso al testo sito
                         ,'testo'     =>  false    // Traduzione testi
                         ,'lingue'    =>  false    // Sistemazione lingue
                         ,'video'     =>  false    // gestione video

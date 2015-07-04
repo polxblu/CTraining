@@ -1,28 +1,32 @@
-<?php include_once('../CLASSANDFUNC/categoriesJS.php'); ?>
-<div id="newWbTxt">
+<?php
+include_once('../CLASSANDFUNC/categoriesJS.php');
+echo '<div id="newWbTxt">';
+
+if ($grants[$_SESSION['status']]['category']){
+echo '
 <table align="center" width="100%" cellpadding="0">
 <tr>
 	<td width="100%" align="center">
-		<form action="index.php?token=<?php echo $_GET['token'];?>" method="post" name="selCategoriesN" id="selCategoriesN">
+		<form action="index.php?token='.$_GET['token'].'" method="post" name="selCategoriesN" id="selCategoriesN">
 
 <table align="center">
 <tr>
-	<td align="center" valign="middle"><?php echo $testo['common']['commName'];?></td></td>
-	<td align="center" valign="middle"><?php echo $testo['category']['categoryType'];?></td>
-	<td align="center" valign="middle"><?php echo $testo['category']['categoryWho'];?></td>
-	<td align="center" valign="middle"><?php echo $var['er'];?></td>
+	<td align="center" valign="middle">'.$testo['common']['commName'].'</td></td>
+	<td align="center" valign="middle">'.$testo['category']['categoryType'].'</td>
+	<td align="center" valign="middle">'.$testo['category']['categoryWho'].'</td>
+	<td align="center" valign="middle">'.$var['er'].'</td>
 </tr>
 <tr>
 	<td align="center" valign="middle"><input name="name" type="text" /></td>
 	<td align="center" valign="middle">
-		<select onChange="chgSelTxt('selCategories','type','who','N','N');" name="typeN" id="typeN" size="1">
+		<select onChange="chgSelTxt(\'selCategories\',\'type\',\'who\',\'N\',\'N\');" name="typeN" id="typeN" size="1">
             <option></option>
-<?php
+';
    			for ($j=0;$j<$liste['type']['num'];$j++){
 	   			echo '<option value="'.$liste['type']['idc'][$j].'">'.$liste['type']['idc'][$j].'</option>
                      ';
    			}
-?>
+echo'
 		</select>
     </td>
 	<td align="center" valign="middle">
@@ -31,8 +35,8 @@
 		</select>
     </td>
 	<td align="center" valign="middle">
-            <button name="ACT" type="submit" value="<?php echo $testo['buttons']['addCategory'];?>">
-               <?php echo $testo['buttons']['addCategory'];?>
+            <button name="ACT" type="submit" value="'.$testo['buttons']['addCategory'].'">
+               '.$testo['buttons']['addCategory'].'>
             </button>
     </td>
 </tr>
@@ -41,8 +45,10 @@
     </td>
 </tr>
 </table>
-<table align="center" width="600" cellpadding="0">
-<?php
+';
+}
+
+echo '<table align="center" width="600" cellpadding="0">';
 
 $giro=0;
 for ($i=0;$i<$liste[$liste['type']['idc'][0]]['num'];$i++){
@@ -55,6 +61,8 @@ if (is_int($i/2)){
    $var['fontColor']='#F0'.$giro.'F00';
 }
 $giro++;
+if (  ($grants[$_SESSION['status']]['testo'] && $_SESSION[$var['lang']]=='yes')
+    ||$grants[$_SESSION['status']]['category']){
 $uar['pag']='chgText';toUrl();
 echo'
 <tr>
@@ -75,6 +83,8 @@ echo'
 		</form>
 </tr>
 ';
+}
+if ($grants[$_SESSION['status']]['webTxt']){
 $uar['pag']='modCategoryOrd';toUrl();
 echo'
 <tr>
@@ -216,6 +226,7 @@ echo'
 </tr>
 ';
     }
+}
 }
 ?>
 </table>

@@ -9,25 +9,47 @@
     
     <hr style="width:100%; height:4px; background-color:white;"/>
     
-    <form id="registrazioneform">
-        Nome e cognome:<br />
-        <input class="formreg" /><br /><br />
+    <form action="index.php<?php if(isset($_GET['token'])) echo '?token='.$_GET['token'];?>" method="post" name="chgText" id="chgText">
+        <?php echo $testo['home']['homeName'];?>:<br />
+        <input class="formreg" name="name" type="text" value="<?php if(isset($_SESSION['name']))echo $_SESSION['name'];?>"/><br /><br />
         
-        Indirizzo eMail:<br />
-        <input class="formreg" /><br /><br />
+        <?php echo $testo['home']['homeMail'];?>:<br />
+        <input value="<?php if(isset($_SESSION['email']))echo $_SESSION['email'];?>" class="formreg" placeholder="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" type="email" name="email" required/><br/><br/>
         
-        Tipo di allenamento:<br />
-        <select class="formreg">
-            <option value=""></option>
-            <option value="">ButtaGiuLaPanza</option>
-        </select><br /><br />
+        <?php echo $testo['home']['homeTryT'];?>:<br />
+        <select class="formreg" name="typeTraining" id="typeTraining" size="1">
+            <option></option>
+            <?php
+            for ($j=0;$j<$liste['typeTraining']['num'];$j++){
+			  echo '<option value="'.$liste['typeTraining']['idc'][$j].'"';
+              if ($_SESSION['typeTraining']==$liste['typeTraining']['idc'][$j])echo' selected';
+              echo '>'.$liste['typeTraining']['name'][$j].'</option>
+            ';
+            }
+            ?>
+	   </select><br/><br />
         
-        Range di eta':<br />
-        <input type="radio"/>0-25 &nbsp;&nbsp;
-        <input type="radio"/>25-45 &nbsp;&nbsp;
-        <input type="radio"/>45-99
+        <?php echo $testo['home']['homeAge'];?>:<br />
+        <?php
+        for($i=0;$i<$kar['rangeAgeNum'];$i++){
+            echo '<input ';
+            if(isset($_SESSION['age']))if($_SESSION['age']==$i)echo ' checked ';
+            echo 'name="age" value="'.$i.'" type="radio"/>'.$kar['rangeAge'][$i].'&nbsp;&nbsp;';
+        }
+        ?>
         <br /><br />
-        <input type="submit" class="formreg" style="font-size:17px;" value="Programma la tua Settimana!"/>
+        <button class="formreg" style="font-size:17px;" name="ACT" type="submit" value="<?php echo $testo['buttons']['register']; ?>">
+            <?php echo $testo['buttons']['freeTrial']; ?>
+        </button>
+        <br /><br />
+        <?php
+        if (!isset($_SESSION['id'])) 
+            echo '
+        <button class="formreg" style="font-size:17px;" name="ACT" type="submit" value="'.$testo['buttons']['register'].'">
+            '.$testo['buttons']['register'].'
+        </button>
+            ';
+        ?>
     </form>
 </div>
 

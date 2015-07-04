@@ -1,29 +1,33 @@
-<?php include_once('../CLASSANDFUNC/txtWebSiteJS.php'); ?>
-<div id="newWbTxt">
+<?php 
+
+include_once('../CLASSANDFUNC/txtWebSiteJS.php');
+echo '<div id="newWbTxt">';
+if ($grants[$_SESSION['status']]['webTxt']){
+echo '
 <table align="center" width="100%" cellpadding="0">
 <tr>
 	<td width="100%" align="center">
-		<form action="index.php?token=<?php echo $_GET['token'];?>" method="post" name="selSectionsN" id="selSectionsN">
+		<form action="index.php?token='.$_GET['token'].'" method="post" name="selSectionsN" id="selSectionsN">
 
 <table align="center">
 <tr>
-	<td align="center" valign="middle"><?php echo $testo['webTxt']['wTxtSections'];?></td></td>
-	<td align="center" valign="middle"><?php echo $testo['webTxt']['wTxtPage'];?></td>
-	<td align="center" valign="middle"><?php echo $testo['webTxt']['textReference'];?></td>
-	<td align="center" valign="middle"><?php echo $testo['common']['commText'];?></td>
-	<td align="center" valign="middle"><?php echo $var['er'];?></td>
+	<td align="center" valign="middle">'.$testo['webTxt']['wTxtSections'].'</td></td>
+	<td align="center" valign="middle">'.$testo['webTxt']['wTxtPage'].'</td>
+	<td align="center" valign="middle">'.$testo['webTxt']['textReference'].'</td>
+	<td align="center" valign="middle">'.$testo['common']['commText'].'</td>
+	<td align="center" valign="middle">'.$var['er'].'</td>
 </tr>
 <tr>
 	<td align="center" valign="middle">
-		<select onChange="chgSelTxt('selSections','sections','pages','N','');" name="sectionsN" id="sectionsN" size="1">
+		<select onChange="chgSelTxt(\'selSections\',\'sections\',\'pages\',\'N\',\'\');" name="sectionsN" id="sectionsN" size="1">
             <option></option>
             <option value="commonTxt">commonTxt</option>
-<?php
+';
    			for ($j=0;$j<$definitions['pagesTxt']['num'];$j++){
 	   			echo '<option value="'.$definitions['pagesTxt']['idc'][$j].'">'.$definitions['pagesTxt']['idc'][$j].'</option>
                      ';
    			}
-?>
+echo '
 		</select>
     </td>
 	<td align="center" valign="middle">
@@ -34,8 +38,8 @@
 	<td align="center" valign="middle"><input name="rifTxt" type="text" /></td>
 	<td align="center" valign="middle"><input name="txt" type="text" /></td>
 	<td align="center" valign="middle">
-            <button name="ACT" type="submit" value="<?php echo $testo['buttons']['addWebTxt'];?>">
-               <?php echo $testo['buttons']['addWebTxt'];?>
+            <button name="ACT" type="submit" value="'.$testo['buttons']['addWebTxt'].'">
+               '.$testo['buttons']['addWebTxt'].'
             </button>
     </td>
 </tr>
@@ -44,8 +48,10 @@
     </td>
 </tr>
 </table>
-<table align="center" width="600" cellpadding="0">
-<?php
+';
+}
+
+
 $txtDB->setColWh(array('languages'));
 $txtDB->setValWh(array($var['lang']));
 $txtDB->setColOr(array('sections','pages','txt'));
@@ -63,6 +69,10 @@ if (is_int($i/2)){
 }
 $giro++;
 $uar['pag']='chgText';toUrl();
+echo'<table align="center" width="600" cellpadding="0">';
+
+if (  ($grants[$_SESSION['status']]['testo'] && $_SESSION[$var['lang']]=='yes')
+    ||$grants[$_SESSION['status']]['webTxt']){
 echo'
 <tr>
 	<td style="border-right:'.$var['cornColor'].';" align="right" valign="bottom">
@@ -81,6 +91,10 @@ echo'
             </button>
 		</form>
 </tr>
+';
+}
+if ($grants[$_SESSION['status']]['webTxt']){
+echo'
 <tr>
 	<td style="border-right:'.$var['cornColor'].';" align="right" valign="bottom">
 		<form action="index.php?token='.$_GET['token'].'" method="post" name="selSections'.$i.'" id="selSections'.$i.'">
@@ -147,6 +161,7 @@ echo'
 </tr>
 ';
 }
+}
+
+echo'</table></div>';
 ?>
-</table>
-</div>

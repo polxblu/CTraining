@@ -34,6 +34,13 @@ engine();
 //Creazione array Testo
 langMAKER($var['lang'],$var['menu'],$var['pag']);
 
+//Creazione array di Servizio
+listMAKER();
+
+ // Array Video
+//videoMAKER($var['lang']);
+
+
 //Inizio codice Sito
 if (isset($_POST['ACT'])){
    switch ($_POST['ACT']){
@@ -44,6 +51,17 @@ if (isset($_POST['ACT'])){
 	  break;
 
 
+
+//Registrazione
+	  case $testo['buttons']['register']:
+          $var['pag']='registration';
+          require('CODES/regUser.php');
+	  break;
+
+//Modifica profilo
+	  case $testo['buttons']['setProfile']:
+          require('CODES/7Profile.php');
+	  break;
 
 //Modifica Immagine
 	  case $testo['buttons']['chgIMG']:

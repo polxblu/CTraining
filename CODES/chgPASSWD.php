@@ -18,8 +18,8 @@ else{
         }else{
             $mainDB->setValWh(array($_SESSION['id']));
             $mainDB->update('user');
-            $uar['message']='passChange';$uar['logOut']='yes';toUrl();
-            Redieasy('PAGEG/messages.php?token='.$var['token']);
+            $uar['lang']=$var['lang'];$uar['message']='passChange';toUrl();
+            Redieasy('PAGES/redAlert.php?token='.$var['token']);
         }
          
     }

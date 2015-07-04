@@ -176,7 +176,10 @@ if (isset($_POST['ACT'])){
 }
 
 //Draw
-include_once('loader.php');
+if(isset($_SESSION['id'])&&$_SESSION['status']!=='user')
+    include_once('loader.php');
+else
+    include_once ('noLog.php');
 
 //close DB
 unset($txtDB);

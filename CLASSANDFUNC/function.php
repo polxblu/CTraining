@@ -34,7 +34,23 @@ function engine(){
         for ($i=0;$i<count($process);$i=$i+2){
             $var[$process[$i]]=$process[$i+1];    
         }
-        if(!isset($var['lang'])){$var['lang']=$testo['defaultL'];}
+        if(!isset($var['lang'])){
+            if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+                $var['ip'] = $_SERVER['HTTP_CLIENT_IP'];
+            } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+                $var['ip'] = $_SERVER['HTTP_X_FORWARDED_FOR'];
+            } else {
+                $var['ip'] = $_SERVER['REMOTE_ADDR'];
+            }
+            $cCode=file_get_contents("http://ipinfo.io/{$var['ip']}/country");
+            
+            $txtDB->setColWh(array('cCode'));
+            $txtDB->setValWh(array($cCode));
+            $res=$txtDB->select('languages');
+            
+            if(empty($res['id'])){$var['lang']=$testo['defaultL'];}
+            else {$var['lang']=$res['id'];}
+        }
     }else{
         if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
             $var['ip'] = $_SERVER['HTTP_CLIENT_IP'];
@@ -51,7 +67,6 @@ function engine(){
             
         if(empty($res['id'])){$var['lang']=$testo['defaultL'];}
         else {$var['lang']=$res['id'];}
-            
     }
 }
 
@@ -111,6 +126,9 @@ function toUrl(){
         $var['token'].=$key.'#'.$value.'#';
     }
     $var['token']=bin2hex(substr($var['token'],0,-1));
+    if(isset($uar['pag']))$uar['pag']=$var['pag'];
+    if(isset($uar['lang']))$uar['lang']=$var['lang'];
+    if(isset($uar['menu']))$uar['menu']=$var['menu'];
     
 }
 
