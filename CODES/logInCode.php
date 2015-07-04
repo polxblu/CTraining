@@ -36,8 +36,10 @@ if (empty($check['id'])){
         toUrl();
         Redieasy('index.php?token='.$var['token']);
     }else{
-        $uar['lang']=$var['lang'];$uar['message']='sendMail';toUrl();
-        Redieasy('PAGES/sendMail.php?token='.$var['token']);
+        $uar['lang']=$var['lang'];
+        $uar['message']='chkReg';
+        toUrl();
+        Redieasy('PAGES/redAlert.php?token='.$var['token']);
     }
     
 } 

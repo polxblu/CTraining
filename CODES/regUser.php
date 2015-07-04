@@ -50,6 +50,11 @@ if($var['er']=='&nbsp;'){
         $mainDB->insert('checkToken');
     
         //invio mail per conferma
+        $var['nome']=$_SESSION['nome'];
+        $var['surname']=$_SESSION['surname'];
+        $var['email']=$_SESSION['email'];
+        $uar['lang']=$var['lang'];toUrl();
+        include_once 'CODES/sendMail.php';
         
         $uar['lang']=$var['lang'];$uar['message']='newUser';toUrl();
         Redieasy('PAGES/redAlert.php?token='.$var['token']);

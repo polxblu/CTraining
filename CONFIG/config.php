@@ -19,6 +19,8 @@ $kar=array(
 	,'rangeAgeNum' => 3     // numero range eta
 	,'rangeAge'    => array('0-25','26-45','46-99')    // range eta
 	,'redTime' => 5     // Time for redirect in second
+	,'redTimeLink' => 20     // Time for redirect in second for messages
+	,'mailConfirm' => 'noreply@colombotraining.it'     // Time for redirect in second for messages
  	);
 
 // Definizione Array Variabil

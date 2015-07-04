@@ -1,7 +1,7 @@
 <html>
 <head>
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
 <link href="CONFIG/videopage.css" rel="stylesheet" type="text/css"/>
 <link href="CONFIG/index.css" rel="stylesheet" type="text/css"/>
 <link href="CONFIG/barra.css" rel="stylesheet" type="text/css"/>

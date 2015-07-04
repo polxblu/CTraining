@@ -31,7 +31,12 @@ for($i=0;$i<$res['num'];$i++){
     $testo[$res['rifTxt'][$i]]=$res['txt'][$i];
 }
 
-
+if(
+    $var['message']=='chkReg'
+    )
+    $var['redTime']=$kar['redTimeLink'];
+else
+    $var['redTime']=$kar['redTime'];
 
 ?>
 
@@ -40,7 +45,7 @@ for($i=0;$i<$res['num'];$i++){
 <head>
 <link href="../sevuoifareilcss.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript">
-var countTime=<?php echo $kar['redTime'];?>+1;
+var countTime=<?php echo $var['redTime'];?>+1;
 var count=0;
 
 function countDown(){
