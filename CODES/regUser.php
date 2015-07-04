@@ -50,10 +50,9 @@ if($var['er']=='&nbsp;'){
         $mainDB->insert('checkToken');
     
         //invio mail per conferma
-        $var['nome']=$_SESSION['nome'];
-        $var['surname']=$_SESSION['surname'];
-        $var['email']=$_SESSION['email'];
-        $uar['lang']=$var['lang'];toUrl();
+        $var['nome']=$_POST['nome'];
+        $var['surname']=$_POST['surname'];
+        $var['email']=$_POST['email'];
         include_once 'CODES/sendMail.php';
         
         $uar['lang']=$var['lang'];$uar['message']='newUser';toUrl();
