@@ -1,7 +1,7 @@
 <?php
 // zona dedicata al debug
 echo '
-<div id="debug" style="display:block; background-color: #ffffff; position: relative; bottom:0px; left:50%;  margin-left:-450px; width: 900px; border:1px #000000 solid">
+<div id="debug" style="z-index:999; display:block; background-color: #ffffff; position: relative; bottom:0px; left:50%;  margin-left:-450px; width: 900px; border:1px #000000 solid">
 ';
 if (isset($_GET['token'])){
     echo '&nbsp;Token&nbsp;<font color="#ff0000">&nbsp;<=> '.$_GET['token'].'<br></font>';
